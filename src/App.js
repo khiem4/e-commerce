@@ -3,6 +3,7 @@ import { Router, Route, Link, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import ProductCard from './components/ProductCard'
+import NavSearchBar from './components/Nav&Search_bar'
 
 const App = () => {
   const [products, setProducts] = useState([])
@@ -14,9 +15,10 @@ const App = () => {
   }, [])
 
   return (
-    <div>
-      <Header products={products} />
-      <ProductCard products={products} />
+    <>
+      <Header />
+      <NavSearchBar />
+      {/* <ProductCard products={products} /> */}
       {/* <Router>
         <Link to="/">Processor</Link>
         <Link to="/">Graphics cards</Link>
@@ -33,7 +35,7 @@ const App = () => {
       </Router> */}
 
 
-    </div >
+    </>
   )
 }
 

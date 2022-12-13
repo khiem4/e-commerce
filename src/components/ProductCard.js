@@ -1,4 +1,4 @@
-import "./product-card.css"
+import "./Product-card.css"
 
 const ProductCard = ({ products }) => {
   const smartPhones = products.filter(item =>
