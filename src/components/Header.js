@@ -13,7 +13,7 @@ const Header = () => {
         <span className='phone'>090.xxxx.xxxx</span></p>
 
       <div className="user-cart">
-        <div className='dropdown'>
+        <div className='header-dropdown'>
           <div className="icons">
             <FaRegUser className='user-dropdown' size={25} />
           </div>
