@@ -4,14 +4,16 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import ProductCard from './components/ProductCard'
 import NavSearchBar from './components/Nav&Search_bar'
-import Category from './components/Category'
+import Categories from './components/Categories'
+import Banner from './components/Banner'
+
 
 const App = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/products')
+      .get('https://dummyjson.com/products?limit=100')
       .then(response => setProducts(response.data.products))
   }, [])
 
@@ -19,8 +21,9 @@ const App = () => {
     <>
       <Header />
       <NavSearchBar />
-      <Category products={products} />
-      {/* <ProductCard products={products} /> */}
+      <Categories products={products} />
+      <Banner />
+      <ProductCard products={products} />
       {/* <Router>
         <Link to="/">Processor</Link>
         <Link to="/">Graphics cards</Link>

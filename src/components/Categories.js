@@ -1,6 +1,5 @@
-import './Category.css'
 
-const Category = ({ products }) => {
+const Categories = ({ products }) => {
 
   const smartPhones = products.filter(item =>
     item.category === "smartphones")
@@ -29,7 +28,7 @@ const Category = ({ products }) => {
           </div>
           <div className='category-items'>
             <img
-              src={'https://i.dummyjson.com/data/products/35/thumbnail.jpg'}
+              src={'https://i.dummyjson.com/data/products/35/2.jpg'}
               alt="furniture" />
             <a href="">Furniture</a>
           </div>
@@ -45,4 +44,4 @@ const Category = ({ products }) => {
   )
 }
 
-export default Category
+export default Categories

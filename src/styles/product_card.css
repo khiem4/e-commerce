@@ -1,0 +1,53 @@
+.products-container {
+  background-color: var(--background-color-gray);
+}
+
+.row {
+  display: grid;
+  grid-template-rows: 70px 250px;
+  justify-content: center;
+  align-items: center;
+}
+
+.row > h2 {
+  border-left: 4px solid var(--a-text-color);
+  padding: 0 5px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(150px, 250px));
+  place-content: center;
+}
+
+.smartphones-product-card {
+  border: 1px solid rgb(240, 236, 236);
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  background-color: var(--background-color-white);
+}
+
+.smartphones-product-card > img {
+  place-self: center;
+  max-width: 200px;
+  min-height: 150px;
+}
+
+.product-name-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-name-price > a {
+  font-weight: bold;
+}
+
+.add-to-cart-dropdown {
+  display: none;
+}
+
+.product-name-price > p {
+  color: var(--a-text-color);
+}

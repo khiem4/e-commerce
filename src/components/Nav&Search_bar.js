@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { FaListUl, FaSearch, FaMobileAlt, FaLaptop } from 'react-icons/fa'
 import { GiPaintedPottery, GiWatch } from 'react-icons/gi'
 import { MdOutlineChair } from 'react-icons/md'
-import './Nav&Search_bar.css'
 
 const NavSearchBar = () => {
   // const [filterProduct, setFilterProduct] = useState('')
@@ -20,8 +19,10 @@ const NavSearchBar = () => {
   return (
     <div className='nav-search'>
       <div className="nav">
-        <FaListUl size={25} />
-        <span>Category</span>
+        <div className='menu'>
+          <FaListUl size={25} />
+          <span>Menu</span>
+        </div>
         <div className='nav-list'>
           <div>
             <FaMobileAlt />
