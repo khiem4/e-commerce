@@ -6,6 +6,7 @@ import ProductCard from './components/ProductCard'
 import NavSearchBar from './components/Nav&Search_bar'
 import Categories from './components/Categories'
 import Banner from './components/Banner'
+import Footer from './components/Footer'
 
 
 const App = () => {
@@ -24,22 +25,7 @@ const App = () => {
       <Categories products={products} />
       <Banner />
       <ProductCard products={products} />
-      {/* <Router>
-        <Link to="/">Processor</Link>
-        <Link to="/">Graphics cards</Link>
-        <Link to="/">Memory</Link>
-        <Link to="/">Motherboards</Link>
-        <Link to="/">Cases</Link>
-        <Link to="/">Monitors</Link>
-
-        <Routes>
-          <Route path="/notes" element={<Notes />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </Router> */}
-
-
+      <Footer />
     </>
   )
 }

@@ -1,0 +1,29 @@
+.footer_info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 20px 0;
+}
+
+.footer_email {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid black;
+  padding: 10px;
+  background-color: rgb(45, 44, 44);
+  color: white;
+  margin-top: 40px;
+}
+
+.footer > h4 {
+  margin: 40px 0 30px;
+}
+
+.footer > ul > li {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+}
