@@ -17,7 +17,7 @@ const NavSearchBar = () => {
   //   : products
 
   return (
-    <div className='nav-search'>
+    <div className='nav_search'>
       <div className="nav">
         <div className='menu'>
           <FaListUl size={25} />

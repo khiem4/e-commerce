@@ -1,8 +1,11 @@
-.nav-search {
+.nav_search {
   display: flex;
   background-color: rgb(43, 41, 41);
   align-items: center;
   margin-top: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .nav {
