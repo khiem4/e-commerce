@@ -6,10 +6,10 @@ const Footer = () => {
     <div className='footer_container'>
       <div className="footer_info">
         <div className='footer about'>
-          <h4>ABOUT</h4>
+          <h4>CONTACT INFO</h4>
           <ul>
             <li> <GrLocation /> 221B Baker Street, London, England</li>
-            <li><GrPhone /> 0203.xxx.xxx</li>
+            <li><GrPhone /> <span className="phone_number">0203.xxx.xxx</span></li>
             <li><BsInfoCircle /> About Us</li>
           </ul>
         </div>

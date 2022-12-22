@@ -5,11 +5,11 @@ const Header = () => {
     <div className='header'>
       <img className='logo' src={require('../images/shop-logo.jpg')} alt="store-logo" />
       <p className='service support'>Customer support <br />
-        <span className='header_phone_number'>0905.xxxx.xxx</span></p>
+        <span className='phone_number'>0905.xxxx.xxx</span></p>
       <p className='service hotline'>Hotline <br />
-        <span className='header_phone_number'>0925.xxxx.xxx</span></p>
+        <span className='phone_number'>0925.xxxx.xxx</span></p>
       <p className='service feedback'>Service feedback <br />
-        <span className='header_phone_number'>090.xxxx.xxxx</span></p>
+        <span className='phone_number'>090.xxxx.xxxx</span></p>
 
       <div className="user-cart">
         <div className='header-dropdown'>
