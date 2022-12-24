@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className='footer_container'>
       <div className="footer_info">
-        <div className='footer about'>
+        <div className='footer contact'>
           <h4>CONTACT INFO</h4>
           <ul>
             <li> <GrLocation /> 221B Baker Street, London, England</li>
@@ -13,7 +13,7 @@ const Footer = () => {
             <li><BsInfoCircle /> About Us</li>
           </ul>
         </div>
-        <div className='footer policy'>
+        <div className='footer policies'>
           <h4>POLICIES</h4>
           <ul>
             <li>Warranty</li>
