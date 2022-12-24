@@ -1,4 +1,3 @@
-
 const Categories = ({ products }) => {
 
   const smartPhones = products.filter(item =>
