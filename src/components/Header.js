@@ -3,13 +3,18 @@ import { FaRegUser, FaCartPlus } from 'react-icons/fa'
 const Header = () => {
   return (
     <div className='header'>
-      <img className='logo' src={require('../images/shop-logo.jpg')} alt="store-logo" />
-      <p className='service support'>Customer support <br />
-        <span className='phone_number'>0905.xxxx.xxx</span></p>
-      <p className='service hotline'>Hotline <br />
-        <span className='phone_number'>0925.xxxx.xxx</span></p>
-      <p className='service feedback'>Service feedback <br />
-        <span className='phone_number'>090.xxxx.xxxx</span></p>
+      <div className='logo'>
+        <img
+          src={require('../images/shop-logo.jpg')} alt="store-logo" />
+      </div>
+      <div className="services">
+        <p className='support'>Customer support <br />
+          <span className='phone_number'>0905.xxxx.xxx</span></p>
+        <p className='hotline'>Hotline <br />
+          <span className='phone_number'>0925.xxxx.xxx</span></p>
+        <p className='feedback'>Service feedback <br />
+          <span className='phone_number'>090.xxxx.xxxx</span></p>
+      </div>
 
       <div className="user-cart">
         <div className='header-dropdown'>

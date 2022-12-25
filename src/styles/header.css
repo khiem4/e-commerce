@@ -1,40 +1,34 @@
 .header {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
 }
 
-.header > img {
+.logo img {
   justify-self: center;
-  max-width: 100px;
+  aspect-ratio: 4/1;
+  object-fit: contain;
+  max-width: 100%;
 }
 
 .phone_number {
   color: var(--a-text-color);
 }
 
-.logo {
-  grid-column: 1 / 2;
-  max-width: 50px;
-}
 
 .support {
-  justify-self: end;
-  border-right: 1px solid rgb(225, 214, 214);
+  border-right: 1px solid var(--border-color-gray);
   padding-right: 20px;
 }
 
-.hotline {
-  justify-self: center;
-}
-
-.feedback {
-  justify-self: start;
+.services {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .icons {
   border: 1px solid;
-  height: 40px;
+  padding: 5px;
   display: flex;
   align-items: center;
   background-color: rgb(71, 70, 70);
@@ -55,9 +49,9 @@
 
 .user-dropdown-content {
   position: absolute;
-  transform: translate(-100px);
-  color: white;
-  background-color: white;
+  transform: translate(-91px);
+  color: var(--background-color-white);
+  background-color: var(--background-color-white);
   padding: 10px 10px;
   border: 1px solid var(--border-color-gray);
   border-top: none;
@@ -90,4 +84,15 @@
   background-color: white;
   color: var(--a-text-color);
   border: 1px solid var(--a-text-color);
+}
+
+@media (max-width: 900px) {
+  .header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .services {
+    display: none;
+  }
 }
