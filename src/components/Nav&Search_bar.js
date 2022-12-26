@@ -43,10 +43,16 @@ const NavSearchBar = () => {
             <a href="#">Watches</a></div>
         </div>
       </div>
-      <form className='search'>
-        <input type="text" name='search' placeholder='Search items...' />
-        <button><FaSearch size={20} /></button>
-      </form>
+
+      <div className="search_bar">
+        <form>
+          <input
+            type="text" name='search' placeholder='Search items...' />
+        </form>
+        <button>
+          <FaSearch size={20} />
+        </button>
+      </div>
     </div>
   )
 }
