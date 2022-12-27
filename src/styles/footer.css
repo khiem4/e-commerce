@@ -1,10 +1,10 @@
 .footer_info {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
   place-items: center;
-  max-width: 100%;
   background-color: white;
-  padding: 20px 0;
+  margin: 50px;
 }
 
 .footer_email {
@@ -14,11 +14,10 @@
   padding: 10px;
   background-color: rgb(45, 44, 44);
   color: white;
-  margin-top: 20px;
 }
 
 .footer > h4 {
-  margin: 40px 0 30px;
+  margin-bottom: 40px;
 }
 
 .footer > ul > li {
@@ -28,7 +27,7 @@
   padding: 10px 0;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .footer_info {
     display: grid;
     grid-template-columns: 1fr;

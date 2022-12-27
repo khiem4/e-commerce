@@ -3,7 +3,7 @@ import { BsInfoCircle, BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs
 
 const Footer = () => {
   return (
-    <div className='footer_container'>
+    <div>
       <div className="footer_info">
         <div className='footer contact'>
           <h4>CONTACT INFO</h4>
