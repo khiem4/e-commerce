@@ -22,7 +22,7 @@ const App = () => {
     <>
       <Header />
       <NavSearchBar />
-      <Categories products={products} />
+      {/* <Categories products={products} /> */}
       <Banner />
       <ProductCard products={products} />
       <Footer />

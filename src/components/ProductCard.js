@@ -12,79 +12,74 @@ const ProductCard = ({ products }) => {
     item.category === "mens-watches")
 
   return (
-    <>
-      <div className='products_container'>
-        <div className='row'>
-          <h2>Smart Phones</h2>
-          <div className='products'>
-            {smartPhones.map(item =>
-              <div className='product_card' key={item.id}>
-                <div className='thumbnail'>
-                  <div className='hover_cart'>
-                    <button>
-                      <BsFillCartPlusFill size={20} />
-                    </button>
-                  </div>
-                  <img src={item.thumbnail} />
+    <div className='products_container'>
+      <div className='row'>
+        <h2>Smart Phones</h2>
+        <div className='products'>
+          {smartPhones.map(item =>
+            <div className='product_card' key={item.id}>
+              <div className='thumbnail'>
+                <div className='hover_cart'>
+                  <button>
+                    <BsFillCartPlusFill size={20} />
+                  </button>
                 </div>
-                <div className='name_price'>
-                  <a href='#'>{item.title}</a>
-                  <p>{item.price} $</p>
-                </div>
+                <img src={item.thumbnail} />
               </div>
-            )}
-          </div>
+              <div className='name_price'>
+                <a href='#'>{item.title}</a>
+                <p>{item.price} $</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className='products_container'>
-        <div className='row'>
-          <h2>Laptops</h2>
-          <div className='products'>
-            {laptops.map(item =>
-              <div className='product_card' key={item.id}>
-                <div className='thumbnail'>
-                  <div className='hover_cart'>
-                    <button>
-                      <BsFillCartPlusFill size={20} />
-                    </button>
-                  </div>
-                  <img src={item.thumbnail} />
+
+      <div className='row'>
+        <h2>Laptops</h2>
+        <div className='products'>
+          {laptops.map(item =>
+            <div className='product_card' key={item.id}>
+              <div className='thumbnail'>
+                <div className='hover_cart'>
+                  <button>
+                    <BsFillCartPlusFill size={20} />
+                  </button>
                 </div>
-                <div className='name_price'>
-                  <a href='#'>{item.title}</a>
-                  <p>{item.price} $</p>
-                </div>
+                <img src={item.thumbnail} />
               </div>
-            )}
-          </div>
+              <div className='name_price'>
+                <a href='#'>{item.title}</a>
+                <p>{item.price} $</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
-      <div className='products_container'>
-        <div className='row'>
-          <h2>Watches</h2>
-          <div className='products'>
-            {watches.map(item =>
-              <div className='product_card' key={item.id}>
-                <div className='thumbnail'>
-                  <div className='hover_cart'>
-                    <button>
-                      <BsFillCartPlusFill size={20} />
-                    </button>
-                  </div>
-                  <img src={item.thumbnail} />
+      <div className='row'>
+        <h2>Watches</h2>
+        <div className='products'>
+          {watches.map(item =>
+            <div className='product_card' key={item.id}>
+              <div className='thumbnail'>
+                <div className='hover_cart'>
+                  <button>
+                    <BsFillCartPlusFill size={20} />
+                  </button>
                 </div>
-                <div className='name_price'>
-                  <a href='#'>{item.title}</a>
-                  <p>{item.price} $</p>
-                </div>
+                <img src={item.thumbnail} />
               </div>
-            )}
-          </div>
+              <div className='name_price'>
+                <a href='#'>{item.title}</a>
+                <p>{item.price} $</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
