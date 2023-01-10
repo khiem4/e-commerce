@@ -5,7 +5,9 @@ const Header = () => {
   return (
     <div className='header'>
       <div className='logo_header'>
-        <img src={require('../images/logo.jpg')} alt="store-logo" />
+        <Link to={'/'}>
+          <img src={require('../images/logo.jpg')} alt="store-logo"></img>
+        </Link>
       </div>
       <div className="services">
         <p className='support'>Customer support <br />
@@ -26,7 +28,7 @@ const Header = () => {
           </div>
           <div className='user-dropdown-content'>
             <Link to='/login'>Login</Link>
-            <a className='user' href="#">Sign-in</a>
+            <Link to='/register'>Register</Link>
           </div>
         </div>
         <div className="icons">

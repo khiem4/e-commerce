@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Header from './Header'
+import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
   const [username, setUsername] = useState('')
@@ -15,25 +15,29 @@ const LoginForm = () => {
             <input
               type="text"
               name="username"
-              onChange={(e) => setUsername(e.target.value)} />
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder='Username'
+            />
           </div>
           <div className="password_login">
             <span>Password</span>
             <input
               type="text"
               name="username"
-              onChange={(e) => setPassword(e.target.value)} />
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Password'
+            />
           </div>
           <button>Login</button>
           <div className='login_register'>
             <div>
               <p>Not a member yet?</p>
-              <a href='/register'> Register</a>
+              <Link to='/register'> Register</Link>
             </div>
           </div>
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 

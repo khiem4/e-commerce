@@ -1,21 +1,9 @@
-import { useState } from 'react'
 import { FaListUl, FaSearch, FaMobileAlt, FaLaptop } from 'react-icons/fa'
 import { GiPaintedPottery, GiWatch } from 'react-icons/gi'
 import { MdOutlineChair } from 'react-icons/md'
+import { Link } from 'react-router-dom'
 
 const NavSearchBar = () => {
-  // const [filterProduct, setFilterProduct] = useState('')
-
-  // const search = (event) => {
-  //   event.preventDefault()
-  //   setFilterProduct(event.target.value)
-  // }
-
-  // const filter = filterProduct
-  //   ? products.filter(item =>
-  //     item.title.toLowerCase().includes(filterProduct.toLowerCase()))
-  //   : products
-
   return (
     <div className='nav_search'>
       <div className="nav">
@@ -26,21 +14,24 @@ const NavSearchBar = () => {
         <div className='nav-list'>
           <div>
             <FaMobileAlt />
-            <a href="#">Smart Phones</a>
+            <Link to="/smartphones">Smart Phones</Link>
           </div>
           <div>
             <GiPaintedPottery />
-            <a href="#">Home Decoration</a>
+            <Link to="/decoration">Decoration</Link>
           </div>
           <div>
             <MdOutlineChair />
-            <a href="#">Furniture</a></div>
+            <Link to="/furniture">Furniture</Link>
+          </div>
           <div>
             <FaLaptop />
-            <a href="#">Laptops</a></div>
+            <Link to="/laptop">Laptop</Link>
+          </div>
           <div>
             <GiWatch />
-            <a href="#">Watches</a></div>
+            <Link to="/watches">Watches</Link>
+          </div>
         </div>
       </div>
 

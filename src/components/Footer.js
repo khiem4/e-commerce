@@ -3,9 +3,9 @@ import { BsInfoCircle, BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs
 
 const Footer = () => {
   return (
-    <div>
-      <div className="footer_info">
-        <div className='footer contact'>
+    <div className='footer'>
+      <div className="footer_info_container">
+        <div className='footer_info contact'>
           <h4>CONTACT INFO</h4>
           <ul>
             <li> <GrLocation /> 221B Baker Street, London, England</li>
@@ -13,7 +13,7 @@ const Footer = () => {
             <li><BsInfoCircle /> About Us</li>
           </ul>
         </div>
-        <div className='footer policies'>
+        <div className='footer_info policies'>
           <h4>POLICIES</h4>
           <ul>
             <li>Warranty</li>
@@ -21,8 +21,8 @@ const Footer = () => {
             <li>Privacy</li>
           </ul>
         </div>
-        <div className='footer social_media'>
-          <h4>Social Media</h4>
+        <div className='footer_info social_media'>
+          <h4>SOCIAL MEDIA</h4>
           <ul>
             <li><BsFacebook size={20} /></li>
             <li><BsInstagram size={20} /></li>

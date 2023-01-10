@@ -5,13 +5,12 @@
 }
 
 .logo_header {
+  height: 100px;
+  width: 100px;
   justify-self: center;
 }
 
 .logo_header img {
-  justify-self: center;
-  aspect-ratio: 3/1;
-  object-fit: contain;
   max-width: 100%;
 }
 
@@ -90,25 +89,13 @@
   border: 1px solid var(--a-text-color-orange);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   .header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .logo_header img {
-    aspect-ratio: 3.5/1;
-    object-fit: contain;
+    display: flex;
+    justify-content: space-around;
   }
 
   .services {
     display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  .logo_header img {
-    aspect-ratio: 2.5/1;
-    object-fit: contain;
   }
 }

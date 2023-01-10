@@ -1,12 +1,14 @@
 @import url(./styles/header.css);
-@import url(./styles/categories.css);
 @import url(./styles/nav&search_bar.css);
-@import url(./styles/product_card.css);
+@import url(./styles/products_home_page.css);
 @import url(./styles/banner.css);
 @import url(./styles/footer.css);
+@import url(./styles/login_form.css);
+@import url(./styles/register_form.css);
+@import url(./styles/products.css);
 
 * {
-  --a-text-color: orangered;
+  --a-text-color-orange: orangered;
   --border-color-gray: rgb(228, 219, 219);
   --background-color-gray: rgb(237, 237, 237);
   --background-color-white: white;
@@ -24,5 +26,13 @@ a {
 }
 
 a:hover {
-  color: var(--a-text-color);
+  color: var(--a-text-color-orange);
+}
+
+input {
+  outline: none;
+}
+
+button:active {
+  transform: scale(0.96);
 }
