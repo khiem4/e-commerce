@@ -4,10 +4,11 @@ import axios from 'axios'
 import Header from './components/Header'
 import NavSearchBar from './components/Nav&Search_bar'
 import Banner from './components/Banner'
-import Footer from './components/Footer'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
-import ProductsCard from './components/ProductsCard'
+import Footer from './components/Footer'
+import Products from './components/Products'
+import ProductsPage from './components/ProductsPage'
 
 
 const App = () => {
@@ -44,23 +45,23 @@ const App = () => {
           <Route path='/' element={
             <>
               <Banner />
-              <div className='products_container'>
-                <ProductsCard products={smartPhones} productName={'Smart Phones'} />
-                <ProductsCard products={laptops} productName={'Laptop'} />
-                <ProductsCard products={watches} productName={'Watches'} />
+              <div className='multiple_products_container'>
+                <Products products={smartPhones} productCategory={'Smart Phones'} />
+                <Products products={laptops} productCategory={'Laptop'} />
+                <Products products={watches} productCategory={'Watches'} />
               </div>
             </>
           } />
           <Route path='/smartphones'
-            element={<ProductsCard products={smartPhones} productName={'Smart Phones'} />} />
+            element={<ProductsPage products={smartPhones} productCategory={'Smart Phones'} />} />
           <Route path='/laptop'
-            element={<ProductsCard products={laptops} productName={'Laptop'} />} />
+            element={<ProductsPage products={laptops} productCategory={'Laptop'} />} />
           <Route path='/watches'
-            element={<ProductsCard products={watches} productName={'Watches'} />} />
+            element={<ProductsPage products={watches} productCategory={'Watches'} />} />
           <Route path='/decoration'
-            element={<ProductsCard products={decoration} productName={'Decoration'} />} />
+            element={<ProductsPage products={decoration} productCategory={'Decoration'} />} />
           <Route path='/furniture'
-            element={<ProductsCard products={furniture} productName={'Furniture'} />} />
+            element={<ProductsPage products={furniture} productCategory={'Furniture'} />} />
           <Route path='/login' element={<LoginForm />} />
           <Route path='/register' element={<RegisterForm />} />
         </Routes>
