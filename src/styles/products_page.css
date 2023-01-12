@@ -1,0 +1,20 @@
+.products_price_sort {
+  display: flex;
+  gap: 10px;
+  margin: 0 100px;
+  justify-content: end;
+  outline-style: none;
+}
+
+.products_price_sort > button {
+  padding: 5px;
+  border: none;
+}
+
+.low_to_high {
+  color: red;
+}
+
+.high_to_low {
+  color: red;
+}
