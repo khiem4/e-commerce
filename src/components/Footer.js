@@ -30,7 +30,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className='footer_email'>
+      <div className='footer_copyright'>
         <p>@Website made by me: khiemcan@gmail.com</p>
       </div>
     </div>

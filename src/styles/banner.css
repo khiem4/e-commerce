@@ -1,5 +1,5 @@
 .sale-banner > div > img {
-  margin: 20px;
+  margin: 0 20px 20px;
   width: 60vw;
   aspect-ratio: 16/9;
   object-fit: contain;
