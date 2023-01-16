@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 const Product = ({ product }) => {
   const [count, setCount] = useState(1)
   const productImg = useRef()
-  const thumbnails = useRef([])
 
   const mouseOver = (e) => {
     productImg.current.src = e
@@ -25,7 +24,10 @@ const Product = ({ product }) => {
           <div className='product'>
             <div className='product_img'>
               <div className='product_main_img' >
-                <img ref={productImg} src={product.thumbnail} alt={product.title} />
+                <img
+                  ref={productImg}
+                  src={product.thumbnail}
+                  alt={product.title} />
               </div>
               <div className='product_thumbnails'>
                 {product.images.map(image =>
@@ -33,7 +35,6 @@ const Product = ({ product }) => {
                     key={image.toString()}
                     src={image}
                     alt={product.title}
-                    ref={e => thumbnails.current.push(e)}
                     onMouseOver={() => mouseOver(image)}
                   />
                 )}
@@ -52,13 +53,21 @@ const Product = ({ product }) => {
                 <p>Quantity:</p>
                 <div className='product_quantity'>
                   <div className='quantity'>
-                    <button onClick={minus}>&minus;</button>
-                    <input type='text' value={count} readOnly />
-                    <button onClick={plus}>&#xff0b;</button>
+                    <button
+                      onClick={minus}>&minus;
+                    </button>
+                    <input
+                      type='text'
+                      value={count}
+                      readOnly />
+                    <button
+                      onClick={plus}>&#xff0b;
+                    </button>
                   </div>
                   <span>{product.stock} available</span>
                 </div>
-                <button className='btn_add_to_cart'>Add to cart</button>
+                <button className='btn_add_to_cart'>Add to cart
+                </button>
               </div>
             </div>
           </div >
