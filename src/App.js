@@ -8,67 +8,54 @@ import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import Footer from './components/Footer'
 import Products from './components/Products'
-import ProductsPage from './components/ProductsPage'
 import Product from './components/Product'
-
 
 const App = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    axios
-      .get('https://dummyjson.com/products?limit=100')
-      .then(response => setProducts(response.data.products))
+    async function fetchApi() {
+      const response = await axios.get('https://dummyjson.com/products?limit=100')
+      const products = response.data.products
+      setProducts(products)
+    }
+    fetchApi()
   }, [])
 
-  const smartPhones = products.filter(item =>
-    item.category === "smartphones")
-
-  const laptops = products.filter(item =>
-    item.category === "laptops")
-
-  const watches = products.filter(item =>
-    item.category === "mens-watches")
-
-  const decoration = products.filter(item =>
-    item.category === "home-decoration")
-
-  const furniture = products.filter(item =>
-    item.category === "furniture")
-
-  const match = useMatch('/product/:id')
+  const match = useMatch('/products/:id')
   const product = match
     ? products.find(item => item.id === Number(match.params.id))
     : null
 
+  const categoriesFilter = [...new Set(products.map(product => product.category))]
+
   return (
     <>
       <Header />
-      <NavSearchBar />
+      <NavSearchBar products={products} categories={categoriesFilter} />
       <Routes>
         <Route path='/' element={
           <>
             <Banner />
             <div className='multiple_products_container'>
-              <Products products={smartPhones} productCategory={'Smart Phones'} />
-              <Products products={laptops} productCategory={'Laptop'} />
-              <Products products={watches} productCategory={'Watches'} />
             </div>
-          </>
-        } />
-        <Route path='/smartphones'
-          element={<ProductsPage products={smartPhones} productCategory={'Smart Phones'} />} />
-        <Route path='/laptop'
-          element={<ProductsPage products={laptops} productCategory={'Laptop'} />} />
-        <Route path='/watches'
-          element={<ProductsPage products={watches} productCategory={'Watches'} />} />
-        <Route path='/decoration'
-          element={<ProductsPage products={decoration} productCategory={'Decoration'} />} />
-        <Route path='/furniture'
-          element={<ProductsPage products={furniture} productCategory={'Furniture'} />} />
+          </>}
+        />
+        <Route path='/products'>
+          <Route path='search' />
+          <Route path=':id' element={<Product product={product} />} />
+          {
+            categoriesFilter.map((category, index) =>
+              <Route
+                key={index}
+                path={category}
+                element={<Products products={products.filter(items =>
+                  items.category === category)} />}
+              />)
+          }
+        </Route>
         <Route path='/login' element={<LoginForm />} />
         <Route path='/register' element={<RegisterForm />} />
-        <Route path='/product/:id' element={<Product product={product} />} />
       </Routes>
       <Footer />
     </>
