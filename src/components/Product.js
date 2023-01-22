@@ -1,11 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 
 const Product = ({ product }) => {
   const [count, setCount] = useState(1)
   const productImg = useRef()
 
-  const mouseOver = (e) => {
+  const mouseOverImg = (e) => {
     productImg.current.src = e
   }
 
@@ -14,7 +15,9 @@ const Product = ({ product }) => {
   }
 
   const minus = () => {
-    if (count >= 2) return setCount(count - 1)
+    if (count >= 2) {
+      return setCount(count - 1)
+    }
   }
 
   return (
@@ -22,28 +25,31 @@ const Product = ({ product }) => {
       {product &&
         <>
           <div className='product'>
-            <div className='product_img'>
-              <div className='product_main_img' >
-                <img
-                  ref={productImg}
-                  src={product.thumbnail}
-                  alt={product.title} />
-              </div>
+            <div className='product_main_img'>
+              <img
+                ref={productImg}
+                src={product.thumbnail}
+                alt={product.title} />
               <div className='product_thumbnails'>
                 {product.images.map(image =>
                   <img
                     key={image.toString()}
                     src={image}
                     alt={product.title}
-                    onMouseOver={() => mouseOver(image)}
+                    onMouseOver={() => mouseOverImg(image)}
                   />
                 )}
+              </div>
+              <div>
               </div>
             </div >
             <div className='product_details'>
               <h3>{product.title}</h3>
               <p className='product_brand'>
-                Brand:<span><Link > {product.brand}</Link></span>
+                Brand:
+                <span>
+                  <Link >{product.brand}</Link>
+                </span>
               </p>
               <p className='product_price'>
                 ${product.price}
