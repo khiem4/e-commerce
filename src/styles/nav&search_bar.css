@@ -42,10 +42,11 @@
 }
 
 .nav-list > div {
-  display: flex;
-  gap: 10px;
-  align-content: center;
   padding: 1rem;
+}
+
+.nav-list > div::first-letter {
+  text-transform: capitalize;
 }
 
 .nav-list > div > a {
@@ -82,7 +83,7 @@
 
 @media (max-width:800px) {
   .nav {
-    margin-left: 50px;
+    margin-left: 10px;
   }
 
   .menu {
@@ -93,10 +94,6 @@
 @media (max-width: 600px) {
   .menu span {
     display: none;
-  }
-
-  .nav {
-    margin-left: 10px;
   }
 
   .search_bar input {
