@@ -1,0 +1,22 @@
+.cart_container {
+  display: grid;
+  gap: 50px;
+  margin: 0 100px;
+}
+
+.cart {
+  display: flex;
+  background-color: white;
+  color: black;
+  width: 100%;
+  gap: 100px;
+}
+
+.cart_head {
+  display: flex;
+  gap: 100px;
+  border-right: 1px solid ;
+  padding-right: 20px;
+}
+
+
