@@ -9,9 +9,11 @@ import RegisterForm from './components/RegisterForm'
 import Footer from './components/Footer'
 import Products from './components/Products'
 import Product from './components/Product'
+import Cart from './components/Cart'
 
 const App = () => {
   const [products, setProducts] = useState([])
+  const match = useMatch('/products/:id')
 
   useEffect(() => {
     async function fetchApi() {
@@ -22,7 +24,6 @@ const App = () => {
     fetchApi()
   }, [])
 
-  const match = useMatch('/products/:id')
   const product = match
     ? products.find(item => item.id === Number(match.params.id))
     : null
@@ -56,6 +57,7 @@ const App = () => {
         </Route>
         <Route path='/login' element={<LoginForm />} />
         <Route path='/register' element={<RegisterForm />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
       <Footer />
     </>
