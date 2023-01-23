@@ -21,19 +21,21 @@ const Header = () => {
         </p>
       </div>
 
-      <div className="user-cart">
+      <div className="user_cart">
         <div className='header-dropdown'>
           <div className="icons">
-            <FaRegUser className='user-dropdown' size={25} />
+            <FaRegUser size={25} />
           </div>
           <div className='user-dropdown-content'>
             <Link to='/login'>Login</Link>
             <Link to='/register'>Register</Link>
           </div>
         </div>
-        <div className="icons">
-          <FaCartArrowDown className='cart' size={25} />
-        </div>
+        <Link
+          className="icons"
+          to='/cart'>
+          <FaCartArrowDown size={25} />
+        </Link>
       </div>
     </div >
   )

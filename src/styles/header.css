@@ -30,21 +30,17 @@
 }
 
 .icons {
-  border: 1px solid;
   padding: 0.4em;
   display: flex;
-  align-items: center;
+  place-content: center;
   background-color: rgb(71, 70, 70);
   border-radius: 5px;
-}
-
-.user-dropdown,
-.cart {
+  border: none;
   width: 50px;
   color: white;
 }
 
-.user-cart {
+.user_cart {
   justify-self: center;
   display: flex;
   gap: 30px;
