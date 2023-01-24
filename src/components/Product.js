@@ -1,23 +1,50 @@
+import { useEffect } from 'react'
 import { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
+import productService from '../services/products'
 
 const Product = ({ product }) => {
-  const [count, setCount] = useState(1)
+  const [quantity, setQuantity] = useState(1)
+  const [cart, setCart] = useState([])
   const productImg = useRef()
+
+  useEffect(() => {
+    productService
+      .getCart()
+      .then(res => setCart(res))
+  }, [])
 
   const mouseOverImg = (e) => {
     productImg.current.src = e
   }
 
   const plus = () => {
-    setCount(count + 1)
+    setQuantity(quantity + 1)
   }
 
   const minus = () => {
-    if (count >= 2) {
-      return setCount(count - 1)
+    if (quantity >= 2) {
+      setQuantity(quantity - 1)
     }
+  }
+
+  const addToCart = async () => {
+    const item = {
+      product: product.title,
+      quantity,
+      id: product.id
+    }
+    const findProduct = cart.find(product => product.id === item.id)
+    const updateQuantity = { ...item, quantity: findProduct.quantity + quantity }
+
+    if (findProduct) {
+      const response = await productService.update(item.id, updateQuantity)
+      const cartUpdated = cart.map(product =>
+        product.id !== response.id ? product : response)
+      return setCart(cartUpdated)
+    }
+
+    const response = await productService.post(item)
+    setCart(cart.concat(response))
   }
 
   return (
@@ -48,7 +75,7 @@ const Product = ({ product }) => {
               <p className='product_brand'>
                 Brand:
                 <span>
-                  <Link >{product.brand}</Link>
+                  {product.brand}
                 </span>
               </p>
               <p className='product_price'>
@@ -64,15 +91,19 @@ const Product = ({ product }) => {
                     </button>
                     <input
                       type='text'
-                      value={count}
-                      readOnly />
+                      value={quantity}
+                      readOnly
+                    />
                     <button
                       onClick={plus}>&#xff0b;
                     </button>
                   </div>
                   <span>{product.stock} available</span>
                 </div>
-                <button className='btn_add_to_cart'>Add to cart
+                <button
+                  className='btn_add_to_cart'
+                  onClick={addToCart}>
+                  Add to cart
                 </button>
               </div>
             </div>
