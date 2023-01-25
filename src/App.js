@@ -1,6 +1,5 @@
 import { Route, Routes, useMatch } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import Header from './components/Header'
 import NavSearchBar from './components/Nav&Search_bar'
 import Banner from './components/Banner'
@@ -10,18 +9,17 @@ import Footer from './components/Footer'
 import Products from './components/Products'
 import Product from './components/Product'
 import Cart from './components/Cart'
+import productService from './services/products'
+import ProductsList from './components/ProductsList'
 
 const App = () => {
   const [products, setProducts] = useState([])
   const match = useMatch('/products/:id')
 
   useEffect(() => {
-    async function fetchApi() {
-      const response = await axios.get('https://dummyjson.com/products?limit=100')
-      const products = response.data.products
-      setProducts(products)
-    }
-    fetchApi()
+    productService
+      .getAll()
+      .then(products => setProducts(products))
   }, [])
 
   const product = match
@@ -50,7 +48,7 @@ const App = () => {
               <Route
                 key={index}
                 path={category}
-                element={<Products products={products.filter(items =>
+                element={<ProductsList products={products.filter(items =>
                   items.category === category)} />}
               />)
           }

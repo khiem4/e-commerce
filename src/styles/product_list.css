@@ -1,0 +1,23 @@
+.products_price_sort {
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+  margin: 0 100px 20px;
+}
+
+.products_price_sort button {
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.high_to_low,
+.low_to_high {
+  color: red;
+}
+
+@media (max-width: 800px) { 
+  .products_price_sort {
+    margin: 0 10px 20px;
+  }
+}

@@ -1,11 +1,13 @@
 @import url(./styles/header.css);
 @import url(./styles/nav&search_bar.css);
-@import url(./styles/products_home_page.css);
 @import url(./styles/banner.css);
 @import url(./styles/footer.css);
 @import url(./styles/login_form.css);
 @import url(./styles/register_form.css);
+@import url(./styles/product.css);
 @import url(./styles/products.css);
+@import url(./styles/cart.css);
+@import url(./styles/product_list.css);
 
 * {
   --a-text-color-orange: orangered;
@@ -17,7 +19,6 @@
   margin: 0;
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
 }
 
 a {
@@ -35,4 +36,5 @@ input {
 
 button:active {
   transform: scale(0.96);
+  opacity: 0.8;
 }
