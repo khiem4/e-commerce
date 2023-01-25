@@ -30,16 +30,19 @@ const Product = ({ product }) => {
   const addToCart = async () => {
     const item = {
       product: product.title,
+      thumbnail: product.thumbnail,
+      price: product.price,
       quantity,
       id: product.id
     }
-    const findProduct = cart.find(product => product.id === item.id)
-    const updateQuantity = { ...item, quantity: findProduct.quantity + quantity }
+    const findProductInCart = cart.find(product => product.id === item.id)
+    const updateQuantity = { ...item, quantity: findProductInCart.quantity + quantity }
 
-    if (findProduct) {
+    if (findProductInCart) {
       const response = await productService.update(item.id, updateQuantity)
       const cartUpdated = cart.map(product =>
         product.id !== response.id ? product : response)
+
       return setCart(cartUpdated)
     }
 
