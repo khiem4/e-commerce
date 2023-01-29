@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/cart'
+const baseUrl = 'http://localhost:3001/api/cart'
 
 
 const getAll = async () => {
@@ -17,19 +17,22 @@ const post = async (obj) => {
   return response.data
 }
 
-const update = async (id, obj) => {
-  const response = await axios.put(`${baseUrl}/${id}`, obj)
+const update = async (obj) => {
+  const response = await axios.put(baseUrl, obj)
   return response.data
 }
 
-
-
+const remove = async (id) => {
+  const response = await axios.delete(`${baseUrl}/${id}`)
+  return response.data
+}
 
 const productService = {
   getAll,
   post,
   getCart,
-  update
+  update,
+  remove
 }
 
 export default productService
