@@ -17,31 +17,34 @@ const Product = ({ product }) => {
     productImg.current.src = e
   }
 
-  const plus = () => {
-    setQuantity(quantity + 1)
-  }
-
-  const minus = () => {
-    if (quantity >= 2) {
-      setQuantity(quantity - 1)
+  const handleQuantity = (value) => {
+    if (quantity === 1 && value === -1) {
+      return null
     }
+    setQuantity(quantity + value)
   }
 
   const addToCart = async () => {
     const item = {
-      product: product.title,
+      title: product.title,
       thumbnail: product.thumbnail,
       price: product.price,
       quantity,
-      id: product.id
     }
-    const findProductInCart = cart.find(product => product.id === item.id)
-    const updateQuantity = { ...item, quantity: findProductInCart.quantity + quantity }
+
+    const findProductInCart = cart.find(product =>
+      product.title === item.title)
 
     if (findProductInCart) {
-      const response = await productService.update(item.id, updateQuantity)
+      const updateQuantity = {
+        ...item,
+        quantity: findProductInCart.quantity + quantity,
+        id: findProductInCart.id
+      }
+
+      const response = await productService.update(updateQuantity)
       const cartUpdated = cart.map(product =>
-        product.id !== response.id ? product : response)
+        product.title !== response.title ? product : response)
 
       return setCart(cartUpdated)
     }
@@ -90,15 +93,17 @@ const Product = ({ product }) => {
                 <div className='product_quantity'>
                   <div className='quantity'>
                     <button
-                      onClick={minus}>&minus;
+                      onClick={() => handleQuantity(-1)}>&minus;
                     </button>
                     <input
                       type='text'
                       value={quantity}
+                      name='quantity'
+                      placeholder='1'
                       readOnly
                     />
                     <button
-                      onClick={plus}>&#xff0b;
+                      onClick={() => handleQuantity(+1)}>&#xff0b;
                     </button>
                   </div>
                   <span>{product.stock} available</span>
