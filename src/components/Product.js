@@ -1,17 +1,9 @@
-import { useEffect } from 'react'
 import { useRef, useState } from 'react'
-import productService from '../services/products'
+import AddToCart from './AddToCart'
 
-const Product = ({ product }) => {
+const Product = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1)
-  const [cart, setCart] = useState([])
   const productImg = useRef()
-
-  useEffect(() => {
-    productService
-      .getCart()
-      .then(res => setCart(res))
-  }, [])
 
   const mouseOverImg = (e) => {
     productImg.current.src = e
@@ -22,35 +14,6 @@ const Product = ({ product }) => {
       return null
     }
     setQuantity(quantity + value)
-  }
-
-  const addToCart = async () => {
-    const item = {
-      title: product.title,
-      thumbnail: product.thumbnail,
-      price: product.price,
-      quantity,
-    }
-
-    const findProductInCart = cart.find(product =>
-      product.title === item.title)
-
-    if (findProductInCart) {
-      const updateQuantity = {
-        ...item,
-        quantity: findProductInCart.quantity + quantity,
-        id: findProductInCart.id
-      }
-
-      const response = await productService.update(updateQuantity)
-      const cartUpdated = cart.map(product =>
-        product.title !== response.title ? product : response)
-
-      return setCart(cartUpdated)
-    }
-
-    const response = await productService.post(item)
-    setCart(cart.concat(response))
   }
 
   return (
@@ -72,8 +35,6 @@ const Product = ({ product }) => {
                     onMouseOver={() => mouseOverImg(image)}
                   />
                 )}
-              </div>
-              <div>
               </div>
             </div >
             <div className='product_details'>
@@ -108,11 +69,11 @@ const Product = ({ product }) => {
                   </div>
                   <span>{product.stock} available</span>
                 </div>
-                <button
-                  className='btn_add_to_cart'
-                  onClick={addToCart}>
-                  Add to cart
-                </button>
+                <AddToCart product={product} quantity={quantity}>
+                  <button className='btn_add_to_cart'>
+                    Add to cart
+                  </button>
+                </AddToCart>
               </div>
             </div>
           </div >
