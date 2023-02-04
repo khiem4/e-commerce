@@ -36,11 +36,11 @@
   opacity: 0.5;
 }
 
-.hover_cart {
+.btn_hover_cart {
   display: none;
 }
 
-.product_card:hover .hover_cart {
+.product_card:hover .btn_hover_cart {
   display: block;
   position: absolute;
   top: 50%;
@@ -49,14 +49,15 @@
   z-index: 9;
 }
 
-.hover_cart button {
+.btn_hover_cart {
   color: orangered;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid;
+  cursor: pointer;
 }
 
-.hover_cart button:hover {
+.btn_hover_cart:hover {
   color: white;
   background-color: orangered;
 }

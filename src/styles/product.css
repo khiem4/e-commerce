@@ -103,8 +103,7 @@
 
 .btn_add_to_cart {
   cursor: pointer;
-  padding: 15px;
-  width: 150px;
+  padding: 15px 60px;
   color: white;
   background-color: orangered;
   border: none;
