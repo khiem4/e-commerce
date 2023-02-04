@@ -101,9 +101,10 @@
   color: rgb(200, 27, 14);
 }
 
-.btn_add_to_cart {
+.btn_product_cart {
   cursor: pointer;
-  padding: 15px 60px;
+  padding: 15px;
+  max-width: 70%;
   color: white;
   background-color: orangered;
   border: none;
@@ -111,12 +112,11 @@
   font-size: 16px;
 }
 
-.btn_add_to_cart:hover {
+.btn_product_cart:hover {
   background-color: white;
   color: orangered;
   border: 1px solid orangered;
 }
-
 
 @media (max-width: 800px) {
   .product ,

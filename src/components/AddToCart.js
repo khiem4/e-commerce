@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import productService from '../services/products'
 
 const AddToCart = (props) => {
-  const { product, quantity } = props
+  const { product, quantity, className } = props
   const [cart, setCart] = useState([])
+
 
   useEffect(() => {
     const fetchCart = async () => {
@@ -42,7 +43,7 @@ const AddToCart = (props) => {
 
   return (
     <button
-      className='btn-w-fit-content'
+      className={className}
       onClick={addToCart}>
       {props.children}
     </button>

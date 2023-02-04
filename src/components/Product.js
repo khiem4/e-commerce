@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import AddToCart from './AddToCart'
 
-const Product = ({ product, addToCart }) => {
+const Product = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
   const productImg = useRef()
 
@@ -69,10 +69,11 @@ const Product = ({ product, addToCart }) => {
                   </div>
                   <span>{product.stock} available</span>
                 </div>
-                <AddToCart product={product} quantity={quantity}>
-                  <button className='btn_add_to_cart'>
-                    Add to cart
-                  </button>
+                <AddToCart
+                  className={'btn_product_cart'}
+                  product={product}
+                  quantity={quantity}>
+                  <p>Add to cart</p>
                 </AddToCart>
               </div>
             </div>

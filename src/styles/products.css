@@ -10,13 +10,6 @@
   gap: 10px;
 }
 
-/* .row h2 {
-  border-left: 5px solid var(--a-text-color-orange);
-  padding: 5px;
-  align-self: start;
-  margin-bottom: 25px;
-} */
-
 .product_card {
   position: relative;
   display: flex; 
@@ -38,6 +31,11 @@
 
 .btn_hover_cart {
   display: none;
+  color: orangered;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid;
+  cursor: pointer;
 }
 
 .product_card:hover .btn_hover_cart {
@@ -47,14 +45,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9;
-}
-
-.btn_hover_cart {
-  color: orangered;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid;
-  cursor: pointer;
 }
 
 .btn_hover_cart:hover {
@@ -73,6 +63,7 @@
 .product_info p {
   color: orangered;
 }
+
 
 @media (max-width: 800px) {
   .row {
