@@ -1,23 +1,20 @@
-import { FaSearch } from 'react-icons/fa'
+import { BsSearch } from 'react-icons/bs'
+import { IconContext } from "react-icons";
 
 const SearchBar = ({ handleFilter }) => {
   return (
-    <div>
+    <IconContext.Provider value={{ className: "search_icon" }}>
       <div className="search_bar">
-        <form>
-          <input
-            type="text"
-            name='search'
-            onChange={(e) => handleFilter(e.target.value)}
-            placeholder='Search items...' />
-          <button type='button'>
-            Search
-          </button>
-        </form>
+        <input
+          type="text"
+          name='search'
+          onChange={(e) => handleFilter(e.target.value)}
+          placeholder='Search items...'
+        />
+        <BsSearch size={15} />
       </div>
-    </div>
+    </IconContext.Provider>
   )
-
 }
 
 export default SearchBar
