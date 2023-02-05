@@ -52,10 +52,6 @@
   border-bottom-right-radius: 5px;
 }
 
-.btn-w-fit-content {
-  border: none;
-  width: fit-content;
-}
 
 @media (max-width: 800px) { 
   .products_price_sort {
