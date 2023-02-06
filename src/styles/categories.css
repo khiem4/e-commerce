@@ -1,0 +1,37 @@
+.categories {
+  margin: 0 100px;
+  width: 200px;
+  position: relative;
+}
+
+.categories > div:first-child {
+  display: flex;
+  gap: 70px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgb(126, 126, 126);
+  font-weight: bold;
+}
+
+.drop_down_categories ul {
+  display: none;
+  margin-top: 10px;
+}
+
+.drop_down_categories li::first-letter {
+  text-transform: capitalize;
+}
+
+.categories:hover .drop_down_categories {
+  z-index: 9;
+  position: absolute;
+  background-color: white;
+  width: 100%;
+}
+
+.categories:hover .drop_down_categories ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 10px;
+}
