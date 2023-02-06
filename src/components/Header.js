@@ -1,7 +1,7 @@
 import { FaRegUser, FaCartArrowDown } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ }) => {
   return (
     <div className='header'>
       <div className='logo_header'>
@@ -9,21 +9,14 @@ const Header = () => {
           <img src={require('../images/logo.jpg')} alt="store-logo"></img>
         </Link>
       </div>
-      <div className="services">
-        <p className='support'>Customer support <br />
-          <span className='phone_number'>0905.xxxx.xxx</span>
-        </p>
-        <p className='hotline'>Hotline <br />
-          <span className='phone_number'>0925.xxxx.xxx</span>
-        </p>
-        <p className='feedback'>Service feedback <br />
-          <span className='phone_number'>090.xxxx.xxxx</span>
-        </p>
+      <div className="navigate">
+        <NavLink to={'/'}>Home</NavLink >
+        <NavLink to={'/products'}>Products</NavLink >
+        <NavLink to={'/cart'}>Cart</NavLink >
       </div>
-
       <div className="user_cart">
         <div className='header-dropdown'>
-          <div className="icons">
+          <div className="icons user">
             <FaRegUser size={25} />
           </div>
           <div className='user-dropdown-content'>
@@ -31,11 +24,14 @@ const Header = () => {
             <Link to='/register'>Register</Link>
           </div>
         </div>
-        <Link
-          className="icons"
-          to='/cart'>
-          <FaCartArrowDown size={25} />
-        </Link>
+        <div className="icons cart">
+          <Link to='/cart'>
+            <FaCartArrowDown size={20} />
+          </Link>
+          <div className='cart_length'>
+            {/* {cart} */}
+          </div>
+        </div>
       </div>
     </div >
   )
