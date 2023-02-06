@@ -1,4 +1,3 @@
-import { BsWindowSidebar } from 'react-icons/bs'
 
 const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
   window.scrollTo({ top: 100, behavior: 'smooth' })
@@ -12,7 +11,11 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
   return (
     <div className='pagination'>
       {pageNumbers.map(number =>
-        <button onClick={() => paginate(number)}>{number}</button>
+        <button
+          key={number}
+          onClick={() => paginate(number)}>
+          {number}
+        </button>
       )}
     </div>
   )
