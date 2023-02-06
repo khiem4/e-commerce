@@ -12,9 +12,7 @@ const Products = ({ products }) => {
               className={'btn_hover_cart'}
               product={product}
               quantity={1}>
-              <button className='btn_hover_cart'>
-                <BsFillCartPlusFill size={20} />
-              </button>
+              <BsFillCartPlusFill size={20} />
             </AddToCart>
             <img src={product.thumbnail} alt={product.title} />
             <div className='product_info'>
