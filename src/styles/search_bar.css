@@ -2,12 +2,13 @@
   display: flex;
   background-color: rgb(57, 56, 56);
   margin: 30px 0 50px;
+  justify-content: center;
 }
 
 .search_bar input {
-  margin: 5px 0 5px 100px;
+  margin: 5px 0 5px 0;
   padding: 10px 10px;
-  width: 40%;
+  width: 30%;
   border-right: 1px solid;
   border: none;
 }
@@ -21,7 +22,6 @@
 
 @media (max-width: 800px) {
   .search_bar input { 
-   margin-left: 10px;
-   width: 50%;
+   width: 40%;
   }
 }
