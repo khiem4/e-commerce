@@ -16,44 +16,7 @@
   color: red;
 }
 
-.pagination {
-  display:block ;
-  float: right;
-  margin: 0 100px;
-  
-}
-
-.pagination button {
-  cursor: pointer;
-  color: black;
-  background-color: whitesmoke;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  border: 1px solid rgb(172, 162, 162);
-}
-
-.pagination button:nth-child(-n+6) {
-  border-right: none;
-}
-
-.pagination button:hover {
-  background-color: black;
-  color: white;
-}
-
-.pagination button:first-child {
-  border-bottom-left-radius: 5px;
-  border-top-left-radius: 5px;
-}
-
-.pagination button:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-
-@media (max-width: 800px) { 
+@media (max-width: 800px) {
   .products_price_sort {
     margin: 0 10px 20px;
   }
