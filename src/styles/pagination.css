@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 100px;
+}
+
+.pagination button {
+  cursor: pointer;
+  color: black;
+  background-color: rgb(166, 162, 162);
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: none;
+}
+
+.pagination button:hover {
+  background-color: var(--color-orange-red);
+  color: white;
+}
+
+.pagination button:first-child {
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.pagination button:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
