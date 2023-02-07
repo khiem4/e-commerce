@@ -19,11 +19,18 @@ const Cart = () => {
     setProducts(updatedProducts)
   }
 
-  const handleNavigate = () => {
-    navigate('/')
-  }
-
   const totalPrice = products.reduce((acc, obj) => acc + obj.price, 0)
+
+  if (products.length === 0) {
+    return (
+      <>
+        <h2 className='shopping_cart'>Shopping Cart</h2>
+        <div className="cart_empty">
+          <h2>No items in cart</h2>
+        </div>
+      </>
+    )
+  }
 
   return (
     <>
@@ -39,8 +46,8 @@ const Cart = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            {products.map(product =>
-              <tbody>
+            {products.map((product, index) =>
+              <tbody key={index}>
                 <tr>
                   <td>
                     <img src={product.thumbnail} alt={product.title} />
@@ -63,8 +70,8 @@ const Cart = () => {
             Total: <span>${totalPrice}</span>
           </p>
           <button>Check Out</button>
-          <button onClick={handleNavigate}
-          >Continue Shopping
+          <button onClick={() => navigate('/products')}>
+            Continue Shopping
           </button>
         </div>
       </div>
