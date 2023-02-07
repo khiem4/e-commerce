@@ -1,7 +1,19 @@
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { FaRegUser, FaCartArrowDown } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
+import productService from '../services/products'
 
 const Header = ({ }) => {
+  const [cart, setCart] = useState([])
+  useEffect(() => {
+    const fetchCart = async () => {
+      const response = await productService.getCart()
+      setCart(response)
+    }
+    fetchCart()
+  }, [cart])
+
   return (
     <div className='header'>
       <div className='logo_header'>
@@ -11,7 +23,7 @@ const Header = ({ }) => {
       </div>
       <div className="navigate">
         <NavLink to={'/'}>Home</NavLink >
-        <NavLink to={'/products'}>Products</NavLink >
+        <NavLink to={'/products/all'}>Products</NavLink >
         <NavLink to={'/cart'}>Cart</NavLink >
       </div>
       <div className="user_cart">
@@ -29,7 +41,7 @@ const Header = ({ }) => {
             <FaCartArrowDown size={20} />
           </Link>
           <div className='cart_length'>
-            {/* {cart} */}
+            {cart.length}
           </div>
         </div>
       </div>
