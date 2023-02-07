@@ -27,7 +27,7 @@ const App = () => {
     ? products.find(item => item.id === Number(match.params.id))
     : null
 
-  const productCategories = [...new Set(products.map(product => product.category))]
+  const categories = [...new Set(products.map(product => product.category))]
 
   return (
     <>
@@ -37,23 +37,23 @@ const App = () => {
         <Route path='/' element={<Banner />} />
         <Route path='/products'>
           <Route
-            path='/products'
-            element={<ProductsPage products={products} categories={productCategories} />}
+            path='/products/all'
+            element={<ProductsPage products={products} categories={categories} />}
           />
           <Route
             path=':id'
-            element={<Product product={product} />}
+            element={<Product product={product} products={products} />}
           />
-          {productCategories.map((category, index) =>
-            <Route
-              key={index}
-              path={category}
-              element={
-                <ProductsPage
-                  products={products.filter(items =>
-                    items.category === category)}
-                  categories={productCategories} />}
-            />)
+          {
+            categories.map((category, index) =>
+              <Route
+                key={index}
+                path={category}
+                element={
+                  <ProductsPage
+                    products={products.filter(items =>
+                      items.category === category)}
+                    categories={categories} />} />)
           }
         </Route>
         <Route path='/login' element={<LoginForm />} />
