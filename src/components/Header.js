@@ -1,18 +1,10 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useContext } from 'react'
 import { FaRegUser, FaCartArrowDown } from 'react-icons/fa'
 import { Link, NavLink } from 'react-router-dom'
-import productService from '../services/products'
+import CartContext from '../context/CartContext'
 
 const Header = ({ }) => {
-  const [cart, setCart] = useState([])
-  useEffect(() => {
-    const fetchCart = async () => {
-      const response = await productService.getCart()
-      setCart(response)
-    }
-    fetchCart()
-  }, [cart])
+  const { cart } = useContext(CartContext)
 
   return (
     <div className='header'>

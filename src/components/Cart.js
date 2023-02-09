@@ -1,27 +1,14 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import productService from '../services/products'
+import CartContext from '../context/CartContext'
 
 const Cart = () => {
-  const [products, setProducts] = useState([])
   const navigate = useNavigate()
+  const { cart, addToCart, handleRemove } = useContext(CartContext)
 
-  useEffect(() => {
-    productService
-      .getCart()
-      .then(res => setProducts(res))
-  }, [])
+  const totalPrice = cart.reduce((acc, obj) => acc + obj.price, 0)
 
-  const handleRemove = async (id) => {
-    await productService.remove(id)
-    const updatedProducts = products.filter(product => product.id !== id)
-    setProducts(updatedProducts)
-  }
-
-  const totalPrice = products.reduce((acc, obj) => acc + obj.price, 0)
-
-  if (products.length === 0) {
+  if (cart.length === 0) {
     return (
       <>
         <h2 className='shopping_cart'>Shopping Cart</h2>
@@ -46,18 +33,28 @@ const Cart = () => {
                 <th>Action</th>
               </tr>
             </thead>
-            {products.map((product, index) =>
+            {cart.map((product, index) =>
               <tbody key={index}>
                 <tr>
                   <td>
                     <img src={product.thumbnail} alt={product.title} />
                     {product.title}
                   </td>
-                  <td>x {product.quantity}</td>
+                  <td>
+                    <div className='cart_quantity'>
+                      <button onClick={() => addToCart(product, -1)}>
+                        &minus;
+                      </button>
+                      <span>x {product.quantity}</span>
+                      <button onClick={() => addToCart(product, +1)}>
+                        +
+                      </button>
+                    </div>
+                  </td>
                   <td>${product.price}</td>
                   <td>
                     <button type='button' onClick={() => handleRemove(product.id)}>
-                      Delete
+                      <span style={{ color: 'red' }}>Delete</span>
                     </button>
                   </td>
                 </tr>
@@ -70,7 +67,7 @@ const Cart = () => {
             Total: <span>${totalPrice}</span>
           </p>
           <button>Check Out</button>
-          <button onClick={() => navigate('/products')}>
+          <button onClick={() => navigate('/products/all')}>
             Continue Shopping
           </button>
         </div>

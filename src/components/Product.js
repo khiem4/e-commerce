@@ -1,12 +1,13 @@
 import { useRef, useState } from 'react'
 import AddToCart from './AddToCart'
+import ProductsCard from './ProductsCard'
 
-const Product = ({ product }) => {
+const Product = ({ product, products }) => {
   const [quantity, setQuantity] = useState(1)
   const productImg = useRef()
 
-  const mouseOverImg = (e) => {
-    productImg.current.src = e
+  const mouseOverImg = (image) => {
+    productImg.current.src = image
   }
 
   const handleQuantity = (value) => {
@@ -15,6 +16,10 @@ const Product = ({ product }) => {
     }
     setQuantity(quantity + value)
   }
+
+  const relatedProducts = products.filter(item =>
+    item.category === product.category &&
+    item.title !== product.title)
 
   return (
     <>
@@ -78,13 +83,13 @@ const Product = ({ product }) => {
               </div>
             </div>
           </div >
-
           <div className='product_description'>
             <h4>Product description</h4>
             <div>
               <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
             </div>
           </div>
+          {products && <ProductsCard relatedProducts={relatedProducts} />}
         </>
       }
     </>
