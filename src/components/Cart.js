@@ -1,12 +1,27 @@
-import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import CartContext from '../context/CartContext'
+import { useDispatch, useSelector } from 'react-redux'
+import { removeProduct, updateProductQuantity } from '../reducers/cartReducer'
 
 const Cart = () => {
   const navigate = useNavigate()
-  const { cart, addToCart, handleRemove } = useContext(CartContext)
+  const dispatch = useDispatch()
+  const cart = useSelector(state => state.cart)
 
-  const totalPrice = cart.reduce((acc, obj) => acc + obj.price, 0)
+  const totalPrice = cart.reduce((acc, obj) =>
+    acc + (obj.price * obj.quantity), 0)
+
+  const handleRemove = async (id) => {
+    dispatch(removeProduct(id))
+  }
+
+  const handleQuantity = (product, quantity) => {
+    if (product.quantity === 1 && quantity === -1) {
+      return null
+    }
+
+    const updateProduct = { ...product, quantity: product.quantity + quantity }
+    dispatch(updateProductQuantity(updateProduct))
+  }
 
   if (cart.length === 0) {
     return (
@@ -42,11 +57,11 @@ const Cart = () => {
                   </td>
                   <td>
                     <div className='cart_quantity'>
-                      <button onClick={() => addToCart(product, -1)}>
+                      <button onClick={() => handleQuantity(product, -1)}>
                         &minus;
                       </button>
                       <span>x {product.quantity}</span>
-                      <button onClick={() => addToCart(product, +1)}>
+                      <button onClick={() => handleQuantity(product, +1)}>
                         +
                       </button>
                     </div>

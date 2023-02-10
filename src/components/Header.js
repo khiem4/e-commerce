@@ -1,10 +1,9 @@
-import { useContext } from 'react'
 import { FaRegUser, FaCartArrowDown } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 import { Link, NavLink } from 'react-router-dom'
-import CartContext from '../context/CartContext'
 
-const Header = ({ }) => {
-  const { cart } = useContext(CartContext)
+const Header = () => {
+  const cart = useSelector(state => state.cart)
 
   return (
     <div className='header'>
