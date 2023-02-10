@@ -2,17 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { CartContextProvider } from './context/CartContext';
+import { configureStore } from '@reduxjs/toolkit';
 import './index.css'
+import cartReducer from './reducers/cartReducer';
+import { Provider } from 'react-redux';
+
+const store = configureStore({
+  reducer: {
+    cart: cartReducer
+  }
+})
+
+console.log(store.getState())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CartContextProvider>
+    <Provider store={store}>
       <BrowserRouter>
         <App />
       </BrowserRouter >
-    </CartContextProvider >
+    </Provider>
   </React.StrictMode>
 );
 
