@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import Categories from './Categories'
 import Pagination from './Pagination'
-import Products from './Products'
+import ProductsCard from './ProductsCard'
 import SearchBar from './SearchBar'
 import SortPrice from './SortPrice'
 
-const ProductsPage = ({ products, productCategories }) => {
+const ProductsPage = ({ products, categories }) => {
   const [productsPriceSort, setProductsPriceSort] = useState([])
   const [toggle, setToggle] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -20,9 +20,13 @@ const ProductsPage = ({ products, productCategories }) => {
   const indexOfLastProduct = currentPage * productsPerPage
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage
   const currentProducts = productsPriceSort.slice(indexOfFirstProduct, indexOfLastProduct)
-  const paginate = pageNumber => setCurrentPage(pageNumber)
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+    window.scrollTo({ top: 100, behavior: 'smooth' })
+  }
 
-  const findProduct = filter
+
+  const productsFilter = filter
     ? productsPriceSort.filter(product =>
       product.title.toLowerCase().includes(filter.toLowerCase()))
     : currentProducts
@@ -46,21 +50,21 @@ const ProductsPage = ({ products, productCategories }) => {
   return (
     <>
       <SearchBar handleFilter={handleFilter} />
-      <Categories productCategories={productCategories} />
-      <SortPrice
-        sortLowToHigh={sortLowToHigh}
-        sortHighToLow={sortHighToLow}
-        toggle={toggle}
-      />
-      <Products products={findProduct} />
-      {
-        findProduct.length > 5 &&
-        <Pagination
-          productsPerPage={productsPerPage}
-          totalProducts={productsPriceSort.length}
-          paginate={paginate}
+      <div className='categories_and_sort'>
+        <Categories categories={categories} />
+        <SortPrice
+          sortLowToHigh={sortLowToHigh}
+          sortHighToLow={sortHighToLow}
+          toggle={toggle}
         />
-      }
+      </div>
+      <ProductsCard products={productsFilter} />
+      {/* { working on this */}
+      <Pagination
+        productsPerPage={productsPerPage}
+        totalProducts={productsPriceSort.length}
+        paginate={paginate}
+      />
     </>
   )
 }
