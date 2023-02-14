@@ -1,13 +1,17 @@
 import { useDispatch } from 'react-redux'
 import { addProductToCart } from '../reducers/cartReducer'
-import { messageNotify } from '../reducers/notificationReducer'
+import { messageNotify, removeMessage } from '../reducers/notificationReducer'
 
 const AddToCart = ({ product, quantity, className, children }) => {
   const dispatch = useDispatch()
 
   function addToCart() {
     dispatch(addProductToCart(product, quantity))
-    dispatch(messageNotify(`product has been added to cart`))
+
+    dispatch(messageNotify(`Product has been added to cart`))
+    setTimeout(() => {
+      dispatch(removeMessage())
+    }, 3000)
   }
 
   return (
