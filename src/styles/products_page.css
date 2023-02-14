@@ -1,23 +1,47 @@
+.categories_and_sort {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 100px 30px;
+}
+
 .products_price_sort {
   display: flex;
   gap: 10px;
-  justify-content: flex-end;
-  margin: 0 100px 20px;
+  justify-content: end;
 }
 
 .products_price_sort button {
   border: none;
-  padding: 0.5rem;
+  padding: 0 10px;
+  margin: 10px 0;
   border-radius: 5px;
 }
 
 .high_to_low,
 .low_to_high {
-  color: red;
+  color: var(--color-orange-red);
 }
 
-@media (max-width: 800px) {
-  .products_price_sort {
-    margin: 0 10px 20px;
+@media (max-width: 1000px) {
+  .categories_and_sort {
+    margin: 10px;
   }
+}
+
+@media (max-width:600px) {
+  .categories_and_sort {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .products_price_sort {
+    justify-content: start;
+  }
+
+  .products_price_sort button {
+    padding: 5px;
+    margin: 5px 0;
+  }
+
 }

@@ -1,12 +1,12 @@
 .search_bar {
   display: flex;
-  background-color: rgb(57, 56, 56);
-  margin: 30px 0 50px;
+  background-color: black;
+  margin-bottom: 50px;
   justify-content: center;
 }
 
 .search_bar input {
-  margin: 5px 0 5px 0;
+  margin: 5px 0;
   padding: 10px 10px;
   width: 30%;
   border-right: 1px solid;
@@ -14,14 +14,13 @@
 }
 
 .search_icon {
-  color: black;
   background-color: white;
   margin: 5px 0;
   padding: 10px;
 }
 
 @media (max-width: 800px) {
-  .search_bar input { 
-   width: 40%;
+  .search_bar input {
+    width: 40%;
   }
 }

@@ -76,14 +76,20 @@
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .row {
     margin: 0 10px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .row {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
   .row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

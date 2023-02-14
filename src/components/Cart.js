@@ -42,7 +42,7 @@ const Cart = () => {
           <table>
             <thead>
               <tr>
-                <th>Product</th>
+                <th colSpan={2}>Product</th>
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Action</th>
@@ -52,7 +52,11 @@ const Cart = () => {
               <tbody key={index}>
                 <tr>
                   <td>
-                    <img src={product.thumbnail} alt={product.title} />
+                    <div>
+                      <img src={product.thumbnail} alt={product.title} />
+                    </div>
+                  </td>
+                  <td>
                     {product.title}
                   </td>
                   <td>
@@ -60,15 +64,17 @@ const Cart = () => {
                       <button onClick={() => handleQuantity(product, -1)}>
                         &minus;
                       </button>
-                      <span>x {product.quantity}</span>
+                      <span>{product.quantity}</span>
                       <button onClick={() => handleQuantity(product, +1)}>
                         +
                       </button>
                     </div>
                   </td>
-                  <td>${product.price}</td>
                   <td>
-                    <button type='button' onClick={() => handleRemove(product.id)}>
+                    ${product.price}
+                  </td>
+                  <td>
+                    <button onClick={() => handleRemove(product.id)}>
                       <span style={{ color: 'red' }}>Delete</span>
                     </button>
                   </td>
@@ -78,9 +84,17 @@ const Cart = () => {
           </table>
         </div>
         <div className='check_out'>
-          <p>
-            Total: <span>${totalPrice}</span>
-          </p>
+          <ul>
+            <li>
+              <span>Taxes</span><span>Calculated at checkout</span>
+            </li>
+            <li>
+              <span>Shipping</span><span className='check_out_word'>FREE</span>
+            </li>
+            <li>
+              <span>Total</span><span className='check_out_word'>${totalPrice}</span>
+            </li>
+          </ul>
           <button>Check Out</button>
           <button onClick={() => navigate('/products/all')}>
             Continue Shopping
