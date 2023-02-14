@@ -10,9 +10,12 @@ import Cart from './components/Cart'
 import productService from './services/products'
 import ProductsPage from './components/ProductsPage'
 import ScrollToTop from './components/ScrollToTop'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllProductsInCart } from './reducers/cartReducer'
 
 const App = () => {
   const [products, setProducts] = useState([])
+  const dispatch = useDispatch()
   const match = useMatch('/products/:id')
 
   useEffect(() => {
@@ -22,6 +25,10 @@ const App = () => {
     }
     fetchProducts()
   }, [])
+
+  useEffect(() => {
+    dispatch(getAllProductsInCart())
+  }, [dispatch])
 
   const product = match
     ? products.find(item => item.id === Number(match.params.id))
