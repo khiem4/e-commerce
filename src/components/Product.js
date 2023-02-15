@@ -1,8 +1,7 @@
 import { useRef, useState } from 'react'
 import AddToCart from './AddToCart'
-import ProductsCard from './ProductsCard'
 
-const Product = ({ product, products }) => {
+const Product = ({ product }) => {
   const [quantity, setQuantity] = useState(1)
   const productImg = useRef()
 
@@ -16,10 +15,6 @@ const Product = ({ product, products }) => {
     }
     setQuantity(quantity + value)
   }
-
-  const relatedProducts = products.filter(item =>
-    item.category === product.category &&
-    item.title !== product.title)
 
   return (
     <>
@@ -45,10 +40,7 @@ const Product = ({ product, products }) => {
             <div className='product_details'>
               <h3>{product.title}</h3>
               <p className='product_brand'>
-                Brand:
-                <span>
-                  {product.brand}
-                </span>
+                Brand:<span> {product.brand}</span>
               </p>
               <p className='product_price'>
                 ${product.price}
@@ -64,9 +56,8 @@ const Product = ({ product, products }) => {
                     <input
                       type='text'
                       value={quantity}
+                      onChange={(e) => setQuantity(e.target.value)}
                       name='quantity'
-                      placeholder='1'
-                      readOnly
                     />
                     <button
                       onClick={() => handleQuantity(+1)}>&#xff0b;
@@ -89,7 +80,6 @@ const Product = ({ product, products }) => {
               <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
             </div>
           </div>
-          {products && <ProductsCard relatedProducts={relatedProducts} />}
         </>
       }
     </>

@@ -1,4 +1,21 @@
-const SortPrice = ({ sortLowToHigh, sortHighToLow, toggle }) => {
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { sortProductsPrice } from '../reducers/productsReducer'
+
+const SortPrice = ({ products }) => {
+  const dispatch = useDispatch()
+  const [toggle, setToggle] = useState('')
+
+  const sortLowToHigh = () => {
+    dispatch(sortProductsPrice(products, 'lowToHigh'))
+    setToggle('low_to_high')
+  }
+
+  const sortHighToLow = () => {
+    dispatch(sortProductsPrice(products, 'highToLow'))
+    setToggle('high_to_low')
+  }
+
   return (
     <div className='products_price_sort'>
       <button

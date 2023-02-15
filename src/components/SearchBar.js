@@ -9,7 +9,7 @@ const SearchBar = ({ handleFilter }) => {
           type="text"
           name='search'
           onChange={(e) => handleFilter(e.target.value)}
-          placeholder='Search items...'
+          placeholder='Search products...'
         />
         <BsSearch size={15} />
       </div>

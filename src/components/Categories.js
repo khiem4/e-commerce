@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { RxDropdownMenu } from 'react-icons/rx'
 
-const Categories = ({ categories }) => {
+const Categories = ({ products }) => {
+  const categories = [...new Set(products.map(product => product.category))]
+
   return (
     <div className='categories'>
       <div>
