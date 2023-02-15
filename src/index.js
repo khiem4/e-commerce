@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { configureStore } from '@reduxjs/toolkit';
 import './index.css'
-import cartReducer from './reducers/cartReducer';
+import { BrowserRouter } from 'react-router-dom';
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
+import notificationReducer from './reducers/notificationReducer';
+import cartReducer from './reducers/cartReducer';
+import productsReducer from './reducers/productsReducer';
 
 const store = configureStore({
   reducer: {
-    cart: cartReducer
+    products: productsReducer,
+    cart: cartReducer,
+    notification: notificationReducer
   }
 })
 
