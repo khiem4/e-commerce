@@ -22,11 +22,11 @@ const ProductsPage = () => {
 
   return (
     <>
-      <SearchBar handleFilter={handleFilter} />
-      <div className='categories_and_sort'>
+      <div className='categories_and_search_bar'>
         <Categories products={products} />
-        <SortPrice products={products} />
+        <SearchBar handleFilter={handleFilter} />
       </div>
+      <SortPrice products={products} />
       <ProductsCard products={products} filter={filter} />
     </>
   )

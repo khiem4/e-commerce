@@ -11,7 +11,7 @@ const SearchBar = ({ handleFilter }) => {
           onChange={(e) => handleFilter(e.target.value)}
           placeholder='Search products...'
         />
-        <BsSearch size={15} />
+        <BsSearch size={20} />
       </div>
     </IconContext.Provider>
   )

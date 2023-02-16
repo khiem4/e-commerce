@@ -20,7 +20,7 @@ const Product = ({ product }) => {
     <>
       {product &&
         <>
-          <div className='product'>
+          <div className='product_container'>
             <div className='product_main_img'>
               <img
                 ref={productImg}
@@ -32,8 +32,7 @@ const Product = ({ product }) => {
                     key={image.toString()}
                     src={image}
                     alt={product.title}
-                    onMouseOver={() => mouseOverImg(image)}
-                  />
+                    onMouseOver={() => mouseOverImg(image)} />
                 )}
               </div>
             </div >
@@ -57,8 +56,7 @@ const Product = ({ product }) => {
                       type='text'
                       value={quantity}
                       onChange={(e) => setQuantity(e.target.value)}
-                      name='quantity'
-                    />
+                      name='quantity' />
                     <button
                       onClick={() => handleQuantity(+1)}>&#xff0b;
                     </button>

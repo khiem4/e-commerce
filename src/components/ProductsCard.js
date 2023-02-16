@@ -21,38 +21,36 @@ const ProductsCard = ({ products, filter }) => {
     window.scrollTo({ top: 100, behavior: 'smooth' })
   }
 
-  const productsCategory = products.filter(product => product.category === id)
+  const productsInCategory = products.filter(product => product.category === id)
 
-  const productsFilter = products.filter(product =>
+  const productsFiltered = products.filter(product =>
     product.title.toLowerCase().includes(filter.toLowerCase()))
 
   if (filter) {
     return (
-      <ProductsContainer products={productsFilter} className={'row'} />
+      <ProductsContainer products={productsFiltered} />
     )
-  }
-
-  if (id) {
+  } else if (id) {
     return (
-      <ProductsContainer products={productsCategory} className={'row'} />
+      <ProductsContainer products={productsInCategory} />
+    )
+  } else {
+    return (
+      <>
+        <ProductsContainer products={currentProducts} />
+        <Pagination
+          productsPerPage={productsPerPage}
+          totalProducts={products.length}
+          paginate={paginate} />
+      </>
     )
   }
-
-  return (
-    <>
-      <ProductsContainer products={currentProducts} className={'row'} />
-      <Pagination
-        productsPerPage={productsPerPage}
-        totalProducts={products.length}
-        paginate={paginate} />
-    </>
-  )
 }
 
-const ProductsContainer = ({ products, className }) => {
+const ProductsContainer = ({ products }) => {
   return (
     <div className='products_container'>
-      <div className={className}>
+      <div className='row'>
         {products.map(product =>
           <div className='product_card' key={product.id} >
             <AddToCart

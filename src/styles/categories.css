@@ -1,6 +1,8 @@
 .categories {
   position: relative;
   width: 200px;
+  background-color: white;
+  border-radius: 5px;
 }
 
 .categories > div {
@@ -11,7 +13,6 @@
   display: flex;
   gap: 70px;
   padding: 10px 10px;
-  margin-bottom: 5px;
   font-weight: bold;
   border: 1px solid black;
 }

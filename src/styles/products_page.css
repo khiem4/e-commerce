@@ -1,18 +1,21 @@
-.categories_and_sort {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 100px 30px;
+.categories_and_search_bar {
+  display: flex;
+  gap: 50px;
+  margin: 30px 0 60px;
+  padding: 5px 100px;
+  background-color: gray;
 }
 
 .products_price_sort {
   display: flex;
   gap: 10px;
-  justify-content: end;
+  justify-content: flex-end;
+  margin-right: 100px;
 }
 
 .products_price_sort button {
   border: none;
-  padding: 0 10px;
+  padding: 7px 10px;
   margin: 10px 0;
   border-radius: 5px;
 }
