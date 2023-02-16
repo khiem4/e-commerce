@@ -7,7 +7,7 @@ import Pagination from './Pagination'
 const ProductsCard = ({ products, filter }) => {
   const id = useParams().id
   const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage] = useState(12)
+  const [productsPerPage] = useState(15)
 
   useEffect(() => {
     setCurrentPage(1)
@@ -54,24 +54,24 @@ const ProductsContainer = ({ products, className }) => {
     <div className='products_container'>
       <div className={className}>
         {products.map(product =>
-          <div
-            className='product_card'
-            key={product.id} >
+          <div className='product_card' key={product.id} >
             <AddToCart
               className={'btn_hover_cart'}
               product={product}
               quantity={1}>
               <BsFillCartPlusFill size={20} />
             </AddToCart>
-            <img
-              src={product.thumbnail}
-              alt={product.title} />
-            <div className='product_info'>
-              <Link
-                to={`/products/${product.category}/${product.id}`}>
-                {product.title}
-              </Link>
-              <p>${product.price}</p>
+            <Link to={`/products/${product.category}/${product.id}`}>
+              <img
+                src={product.thumbnail}
+                alt={product.title} />
+            </Link>
+            <div className='products_info'>
+              <p>{product.title}</p>
+              <div>
+                <span>${Math.round(product.price - (product.price / 100 * product.discountPercentage))}</span>
+                <span>${product.price}</span>
+              </div>
             </div>
           </div>
         )}

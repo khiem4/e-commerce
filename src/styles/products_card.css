@@ -10,7 +10,7 @@
 .row {
   margin: 0 100px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -25,19 +25,35 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  text-align: center;
   border: none;
+  border-radius: 10px;
   padding: 20px 10px;
   background-color: var(--background-color-white);
+  transition: 0.3s
 }
 
 .product_card img {
+  width: 100%;
   aspect-ratio: 16/9;
   object-fit: contain;
 }
 
 .product_card:hover img {
-  opacity: 0.5;
+  opacity: 0.6;
+}
+
+.product_card:hover {
+  box-shadow: 0 0 10px black;
+}
+
+.product_card:hover .btn_hover_cart {
+  display: block;
+  position: absolute;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
 }
 
 .btn_hover_cart {
@@ -49,21 +65,12 @@
   cursor: pointer;
 }
 
-.product_card:hover .btn_hover_cart {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9;
-}
-
 .btn_hover_cart:hover {
   color: white;
   background-color: orangered;
 }
 
-.product_info {
+.products_info {
   justify-self: end;
   margin-top: 30px;
   display: flex;
@@ -71,8 +78,15 @@
   gap: 20px;
 }
 
-.product_info p {
+.products_info div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.products_info div span:last-of-type {
   color: orangered;
+  text-decoration: line-through;
+  justify-self: flex-end;
 }
 
 
