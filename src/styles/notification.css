@@ -1,0 +1,21 @@
+.notification_popup {
+  position: fixed;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 3px;
+  z-index: 10;
+  top: 10%;
+  right: 10px;
+}
+
+.notification_popup div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: black;
+  color: white;
+  z-index: 99;
+}
