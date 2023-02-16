@@ -20,15 +20,15 @@ const Header = () => {
     setNavigation(!navigation)
   }
 
-  const outSideDiv = () => {
+  const isNavigationHidden = navigation ? 'navigation_hidden' : 'navigation_show'
+
+  const clickedOutSideDiv = () => {
     window.addEventListener('click', function (e) {
       if (!navigationDiv.current.contains(e.target)) {
         return setNavigation(true)
       }
     })
   }
-
-  const isNavigationHidden = navigation ? 'navigation_hidden' : 'navigation_show'
 
   return (
     <>
@@ -44,7 +44,7 @@ const Header = () => {
           </div>
           <div
             className={isNavigationHidden}
-            onClick={() => outSideDiv()}>
+            onClick={() => clickedOutSideDiv()}>
             <NavLink to={'/'}>Home</NavLink>
             <NavLink to={'/products/all'}>Products</NavLink>
             <NavLink to={'/cart'}>Cart</NavLink>
