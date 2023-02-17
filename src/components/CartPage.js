@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeProduct, updateProductQuantity } from '../reducers/cartReducer'
 
-const Cart = () => {
+const CartPage = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const cart = useSelector(state => state.cart)
@@ -105,4 +105,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default CartPage
