@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import productService from '../services/products'
+import cartService from '../services/cart'
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -32,7 +32,7 @@ export const {
 
 export const getAllProductsInCart = () => {
   return async dispatch => {
-    const products = await productService.getCart()
+    const products = await cartService.getCart()
     dispatch(initializeCart(products))
   }
 }
@@ -60,21 +60,21 @@ export const addProductToCart = (product, quantity) => {
       return dispatch(updateProductQuantity(productUpdated))
     }
 
-    const response = await productService.post(item)
+    const response = await cartService.post(item)
     return dispatch(addProduct(response))
   }
 }
 
 export const updateProductQuantity = (product) => {
   return async dispatch => {
-    const response = await productService.update(product)
+    const response = await cartService.update(product)
     dispatch(updateProduct(response))
   }
 }
 
 export const removeProduct = (id) => {
   return async dispatch => {
-    await productService.remove(id)
+    await cartService.remove(id)
     dispatch(deleteProduct(id))
   }
 }
