@@ -2,17 +2,17 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { sortProductsPrice } from '../reducers/productsReducer'
 
-const SortPrice = ({ products }) => {
+const SortPrice = () => {
   const dispatch = useDispatch()
   const [toggle, setToggle] = useState('')
 
   const sortLowToHigh = () => {
-    dispatch(sortProductsPrice(products, 'lowToHigh'))
+    dispatch(sortProductsPrice('lowToHigh'))
     setToggle('low_to_high')
   }
 
   const sortHighToLow = () => {
-    dispatch(sortProductsPrice(products, 'highToLow'))
+    dispatch(sortProductsPrice('highToLow'))
     setToggle('high_to_low')
   }
 

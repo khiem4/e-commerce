@@ -23,8 +23,10 @@ export const getAllProducts = () => {
   }
 }
 
-export const sortProductsPrice = (products, string) => {
-  return dispatch => {
+export const sortProductsPrice = (string) => {
+  return (dispatch, getState) => {
+    const products = getState().products
+
     if (string === 'lowToHigh') {
       const sort = [...products].sort((a, b) => a.price - b.price)
       dispatch(sortPrice(sort))
