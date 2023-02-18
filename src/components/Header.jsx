@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { FaRegUser, FaCartArrowDown } from 'react-icons/fa'
+import { FaRegUser } from 'react-icons/fa'
 import { AiOutlineUnorderedList } from 'react-icons/ai'
 import { IoMdCart } from 'react-icons/io'
 import { useSelector } from 'react-redux'

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import { RxDropdownMenu } from 'react-icons/rx'
+import { useSelector } from 'react-redux'
 
-const Categories = ({ products }) => {
+const Categories = () => {
+  const products = useSelector(state => state.products)
   const categories = [...new Set(products.map(product => product.category))]
 
   return (

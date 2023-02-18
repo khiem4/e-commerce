@@ -52,13 +52,9 @@ const CartPage = () => {
               <tbody key={index}>
                 <tr>
                   <td>
-                    <div>
-                      <img src={product.thumbnail} alt={product.title} />
-                    </div>
+                    <img src={product.thumbnail} alt={product.title} />
                   </td>
-                  <td>
-                    {product.title}
-                  </td>
+                  <td>{product.title}</td>
                   <td>
                     <div className='cart_quantity'>
                       <button onClick={() => handleQuantity(product, -1)}>
@@ -85,9 +81,6 @@ const CartPage = () => {
         </div>
         <div className='check_out'>
           <ul>
-            <li>
-              <span>Taxes</span><span>Calculated at checkout</span>
-            </li>
             <li>
               <span>Shipping</span><span className='check_out_word'>FREE</span>
             </li>
