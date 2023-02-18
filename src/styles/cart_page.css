@@ -20,7 +20,7 @@
 }
 
 .table_data_product {
-  flex-grow: 1;
+  flex-grow: 2;
   text-align: center;
 }
 
@@ -47,6 +47,10 @@
   border-top: 1px solid rgb(195, 190, 190);
 }
 
+.table_data_product td:nth-child(2) {
+  text-align: start;
+}
+
 .cart_empty {
   display: flex;
   justify-content: center;
@@ -54,6 +58,7 @@
 }
 
 .check_out {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -136,6 +141,7 @@
 
   .table_data_product td {
     border-top: 0px;
+    margin-top: 10px;
   }
 
   .table_data_product td:nth-child(-n+2) {
