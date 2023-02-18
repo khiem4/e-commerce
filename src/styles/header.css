@@ -13,13 +13,12 @@
 }
 
 .logo_header {
-  width: 150px;
+  max-width: 100px;
 }
 
 .logo_header img {
   max-width: 100%;
   object-fit: contain;
-  aspect-ratio: 16/9;
 }
 
 .navigation_container {
@@ -150,5 +149,15 @@
     top: 10px;
     right: 0;
     font-size: large;
+  }
+}
+
+@media (max-width: 600px) {
+  .logo_header {
+    max-width: 80px;
+  }
+
+  .icons {
+    padding: 5px 10px;
   }
 }
