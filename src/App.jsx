@@ -1,31 +1,26 @@
-import { Route, Routes, useMatch } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Header from './components/Header'
-import Banner from './components/Banner'
+import HomePage from './components/HomePage'
+import CartPage from './components/CartPage'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import Footer from './components/Footer'
 import Product from './components/Product'
-import Cart from './components/Cart'
 import ProductsPage from './components/ProductsPage'
 import ScrollToTop from './components/ScrollToTop'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAllProductsInCart } from './reducers/cartReducer'
 import { getAllProducts } from './reducers/productsReducer'
+import { getAllProductsInCart } from './reducers/cartReducer'
 
 const App = () => {
   const dispatch = useDispatch()
   const products = useSelector(state => state.products)
-  const match = useMatch('/products/:id/:id')
 
   useEffect(() => {
     dispatch(getAllProducts())
     dispatch(getAllProductsInCart())
   }, [dispatch])
-
-  const product = match
-    ? products.find(item => item.id === Number(match.params.id))
-    : null
 
   const categories = [...new Set(products.map(product => product.category))]
 
@@ -34,7 +29,22 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <Routes>
-        <Route path='/' element={<Banner />} />
+        <Route
+          path='/'
+          element={<HomePage />}
+        />
+        <Route
+          path='/login'
+          element={<LoginForm />}
+        />
+        <Route
+          path='/register'
+          element={<RegisterForm />}
+        />
+        <Route
+          path='/cart'
+          element={<CartPage />}
+        />
         <Route path='/products'>
           <Route
             path='/products/all'
@@ -44,17 +54,14 @@ const App = () => {
             path=':id'
             element={<ProductsPage />}
           />
-          {
-            categories.map((category, index) =>
-              <Route
-                key={index}
-                path={`${category}/:id`}
-                element={<Product product={product} />}
-              />)}
+          {categories.map((category, index) =>
+            <Route
+              key={index}
+              path={`${category}/:id`}
+              element={<Product />}
+            />
+          )}
         </Route>
-        <Route path='/login' element={<LoginForm />} />
-        <Route path='/register' element={<RegisterForm />} />
-        <Route path='/cart' element={<Cart />} />
       </Routes>
       <Footer />
     </>
