@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Categories from './Categories'
 import ProductsCard from './ProductsCard'
 import SearchBar from './SearchBar'
+import SortPrice from './SortPrice'
 
 const ProductsPage = () => {
   const [filter, setFilter] = useState('')
@@ -12,6 +13,7 @@ const ProductsPage = () => {
         <Categories />
         <SearchBar setFilter={setFilter} />
       </div>
+      <SortPrice />
       <ProductsCard filter={filter} />
     </>
   )
