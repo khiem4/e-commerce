@@ -1,23 +1,56 @@
+import { useState } from 'react'
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Banner from './Banner'
-import ProductsCard from './ProductsCard'
+import ProductsContainer from './ProductsContainer'
 
 const HomePage = () => {
   const products = useSelector(state => state.products)
-  const productsHighDiscount = products.filter(product => product.discountPercentage > 15)
-  console.log('productsHighDiscount:', productsHighDiscount)
+  const [firstIndex, setCurrentIndex] = useState(0)
+  const [lastIndex, setLastIndex] = useState(5)
+  const [sliderName, setSliderName] = useState('products_slider')
 
-  const productsHighRating = products.filter(product => product.rating > 4.9)
-  console.log('productsHighRating:', productsHighRating)
+  const productsHighDiscount = products.filter(product =>
+    product.discountPercentage > 17)
+
+  const productSlider = productsHighDiscount.slice(firstIndex, lastIndex)
+
+  function handleNextClick() {
+    if (lastIndex >= productsHighDiscount.length) {
+      return null
+    }
+    setCurrentIndex(firstIndex + 1)
+    setLastIndex(lastIndex + 1)
+    setSliderName('products_slider')
+  }
+
+  function handlePrevClick() {
+    if (firstIndex === 0) {
+      return null
+    }
+    setCurrentIndex(firstIndex - 1)
+    setLastIndex(lastIndex - 1)
+    setSliderName('prev_items')
+  }
 
   return (
-    <div>
+    <>
       <Banner />
-      {/* <h2>High Discount Products</h2> */}
-      {/* <ProductsCard products={productsHighDiscount} /> */}
-      <h2>High Rating Products</h2>
-      <ProductsCard products={productsHighRating} />
-    </div>
+      <div className='home_page_products_container'>
+        <h3>Most Discount Products</h3>
+        <div className={sliderName}>
+          <ProductsContainer products={productSlider} />
+          <div className='slider_button'>
+            <button onClick={handlePrevClick}>
+              <AiOutlineArrowLeft />
+            </button>
+            <button onClick={handleNextClick}>
+              <AiOutlineArrowRight />
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
