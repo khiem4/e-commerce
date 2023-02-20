@@ -23,9 +23,9 @@ const Header = () => {
   const isNavigationHidden = navigation ? 'navigation_hidden' : 'navigation_show'
 
   const clickedOutSideDiv = () => {
-    window.addEventListener('click', function (e) {
+    document.addEventListener('click', function (e) {
       if (!navigationDiv.current.contains(e.target)) {
-        return setNavigation(true)
+        return setNavigation(!navigation)
       }
     })
   }
@@ -33,13 +33,15 @@ const Header = () => {
   return (
     <>
       <div className='header'>
-        <div ref={navigationDiv} className='navigation_container'>
+        <div
+          ref={navigationDiv}
+          className='navigation_container'>
           <button onClick={handleClick}>
             <AiOutlineUnorderedList size={30} />
           </button>
           <div className='logo_header'>
             <Link to={'/'}>
-              <img src={require('../images/logo.jpg')} alt="store-logo"></img>
+              <img src={require('../images/logo.jpg')} alt="store-logo" />
             </Link>
           </div>
           <div
