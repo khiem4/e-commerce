@@ -1,13 +1,17 @@
-import { useState, useRef, useEffect } from 'react'
 import { FaRegUser } from 'react-icons/fa'
 import { AiOutlineUnorderedList } from 'react-icons/ai'
 import { IoMdCart } from 'react-icons/io'
-import { useSelector } from 'react-redux'
+import { useState, useRef, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Notification from './Notification'
+import { logOut } from '../reducers/userReducer'
+import { removeMessage, successMessage } from '../reducers/notificationReducer'
 
 const Header = () => {
+  const user = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
+  const dispatch = useDispatch()
   const [navigation, setNavigation] = useState(true)
   const navigationDiv = useRef()
   const location = useLocation().pathname
@@ -30,6 +34,12 @@ const Header = () => {
     })
   }
 
+  const handleLogout = () => {
+    dispatch(logOut())
+    dispatch(successMessage('Logout successful'))
+    dispatch(removeMessage())
+  }
+
   return (
     <>
       <div className='header'>
@@ -47,10 +57,17 @@ const Header = () => {
           <div
             className={isNavigationHidden}
             onClick={() => clickedOutSideDiv()}>
-            <NavLink to={'/'}>Home</NavLink>
-            <NavLink to={'/products/all'}>Products</NavLink>
-            <NavLink to={'/cart'}>Cart</NavLink>
-            <button className='close_navigation'
+            <NavLink to={'/'}>
+              Home
+            </NavLink>
+            <NavLink to={'/products/all'}>
+              Products
+            </NavLink>
+            <NavLink to={'/cart'}>
+              Cart
+            </NavLink>
+            <button
+              className='close_navigation'
               onClick={handleClick}>
               X
             </button>
@@ -62,8 +79,17 @@ const Header = () => {
               <FaRegUser size={25} />
             </div>
             <div className='user_dropdown_content'>
-              <Link to='/login'>Login</Link>
-              <Link to='/register'>Register</Link>
+              {user ?
+                <>
+                  <Link to='/user'>User</Link>
+                  <Link onClick={handleLogout} >Logout</Link>
+                </>
+                :
+                <>
+                  <Link to='/login'>Login</Link>
+                  <Link to='/register'>Register</Link>
+                </>
+              }
             </div>
           </div>
           <div className="icons cart_header">

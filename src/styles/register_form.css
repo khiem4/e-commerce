@@ -1,5 +1,5 @@
 .register_container {
-  margin: 40px;
+  margin-top: 40px;
 }
 
 .register_form {
@@ -10,28 +10,55 @@
 .register_form form {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
+  width: 350px;
+  gap: 20px;
   border: 3px solid rgb(145, 142, 142);
   border-radius: 5px;
   padding: 20px;
 }
 
+.register_form form h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .register_input {
-  display: grid;
-  gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .register_form input {
-  padding: 0.5em 6em 0.5em 1em;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .register_form form button {
-  padding: 0.7em 3em;
+  flex-basis: 1;
+  margin-top: 20px;
+  align-self: center;
+  padding: 10px;
+  width: 50%;
   background-color: var(--a-text-color-orange);
   color: white;
   border: none;
   border-radius: 10px;
+}
+
+.register_form input:invalid {
+  border: 1px solid red;
+}
+
+.register_form input:valid {
+  border: 1px solid black;
+}
+
+.form_invalid {
+  font-size: smaller;
+  color: red;
+}
+
+.form_valid {
+  visibility: hidden;
+  font-size: smaller;
 }

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Header from './components/Header'
@@ -12,14 +12,17 @@ import ProductsPage from './components/ProductsPage'
 import ScrollToTop from './components/ScrollToTop'
 import { getAllProducts } from './reducers/productsReducer'
 import { getAllProductsInCart } from './reducers/cartReducer'
+import { isUserLogged } from './reducers/userReducer'
 
 const App = () => {
   const dispatch = useDispatch()
   const products = useSelector(state => state.products)
+  const user = useSelector(state => state.user)
 
   useEffect(() => {
     dispatch(getAllProducts())
     dispatch(getAllProductsInCart())
+    dispatch(isUserLogged())
   }, [dispatch])
 
   const categories = [...new Set(products.map(product => product.category))]
@@ -35,7 +38,10 @@ const App = () => {
         />
         <Route
           path='/login'
-          element={<LoginForm />}
+          element={
+            !user
+              ? <LoginForm />
+              : <Navigate replace to='/' />}
         />
         <Route
           path='/register'

@@ -1,10 +1,12 @@
 .login_container {
-  margin: 40px;
+  border-top: 1px solid red;
+  padding-top: 30px
 }
 
 .login_form {
   display: flex;
   justify-content: center;
+  margin: 40px;
 }
 
 .login_form form {
