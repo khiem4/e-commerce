@@ -1,13 +1,23 @@
 import axios from 'axios'
 const baseUrl = 'http://localhost:3001/api/cart'
 
+let token = null
+
+const setToken = newToken => {
+  token = `Bearer ${newToken}`
+}
+
 const getCart = async () => {
   const response = await axios.get(baseUrl)
   return response.data
 }
 
 const post = async (obj) => {
-  const response = await axios.post(baseUrl, obj)
+  const config = {
+    headers: { authorization: token }
+  }
+
+  const response = await axios.post(baseUrl, obj, config)
   return response.data
 }
 
@@ -25,7 +35,8 @@ const cartService = {
   post,
   getCart,
   update,
-  remove
+  remove,
+  setToken
 }
 
 export default cartService
