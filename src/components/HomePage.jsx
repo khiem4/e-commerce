@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Banner from './Banner'
@@ -33,6 +33,14 @@ const HomePage = () => {
     setSliderName('prev_items')
   }
 
+  const nextBtnStyle = lastIndex === productsHighDiscount.length
+    ? { opacity: 0.5 }
+    : null
+
+  const preBtnStyle = firstIndex === 0
+    ? { opacity: 0.5 }
+    : null
+
   return (
     <>
       <Banner />
@@ -41,10 +49,14 @@ const HomePage = () => {
         <div className={sliderName}>
           <ProductsContainer products={productSlider} />
           <div className='slider_button'>
-            <button onClick={handlePrevClick}>
+            <button
+              style={preBtnStyle}
+              onClick={handlePrevClick}>
               <AiOutlineArrowLeft />
             </button>
-            <button onClick={handleNextClick}>
+            <button
+              style={nextBtnStyle}
+              onClick={handleNextClick}>
               <AiOutlineArrowRight />
             </button>
           </div>
