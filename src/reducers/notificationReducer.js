@@ -2,28 +2,43 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const notificationSlice = createSlice({
   name: 'notification',
-  initialState: [],
+  initialState: {
+    error: null,
+    success: null
+  },
   reducers: {
-    notify(state, action) {
-      return state.concat(action.payload)
+    success(state, action) {
+      state.success = action.payload
+    },
+    error(state, action) {
+      state.error = action.payload
     },
     remove(state, action) {
-      return state.slice(1)
+      state.error = null
+      state.success = null
     }
   }
 })
 
-export const { notify, remove } = notificationSlice.actions
+export const { success, remove, error } = notificationSlice.actions
 
-export const messageNotify = (message) => {
+export const successMessage = (message) => {
   return dispatch => {
-    dispatch(notify(message))
+    dispatch(success(message))
   }
 }
 
-export const removeMessage = () => {
+export const errorMessage = (message) => {
   return dispatch => {
-    dispatch(remove())
+    dispatch(error(message))
+  }
+}
+
+export const removeMessage = (number) => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch(remove())
+    }, number)
   }
 }
 
