@@ -1,14 +1,5 @@
-.notification_popup {
-  position: fixed;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 3px;
-  z-index: 10;
-  top: 10%;
-  right: 10px;
-}
-
-.notification_popup div {
+.notification_success,
+.notification_error {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -18,4 +9,19 @@
   background-color: black;
   color: white;
   z-index: 99;
+  position: fixed;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.notification_error {
+  top: 30%;
+  color: black;
+  background-color: red;
+}
+
+.notification_success {
+  top: 40%;
+  color: white;
+  background-color: black;
 }
