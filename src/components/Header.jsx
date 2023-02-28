@@ -36,8 +36,9 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logOut())
+    window.localStorage.removeItem('loggedAppUser')
     dispatch(successMessage('Logout successful'))
-    dispatch(removeMessage())
+    dispatch(removeMessage(2000))
   }
 
   return (
@@ -60,7 +61,7 @@ const Header = () => {
             <NavLink to={'/'}>
               Home
             </NavLink>
-            <NavLink to={'/products/all'}>
+            <NavLink to={'/products'}>
               Products
             </NavLink>
             <NavLink to={'/cart'}>
