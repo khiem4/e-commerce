@@ -8,13 +8,13 @@ const Notification = () => {
     <>
       {notification.success &&
         <div className='notification_success'>
-          <MdVerified />
+          <MdVerified size={25} />
           {notification.success}
         </div>
       }
       {notification.error &&
         <div className='notification_error'>
-          <MdError />
+          <MdError size={25} />
           {notification.error}
         </div>
       }

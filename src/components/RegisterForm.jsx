@@ -18,7 +18,7 @@ const RegisterForm = () => {
     userService.create({ username, password })
 
     dispatch(successMessage('Your account has been created successfully '))
-    dispatch(removeMessage())
+    dispatch(removeMessage(2000))
     dispatch(userLogin({ username, password }))
   }
 

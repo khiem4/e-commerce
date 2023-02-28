@@ -17,7 +17,7 @@ const Categories = () => {
           {categories.map((category, index) =>
             <li key={index}>
               <Link to={`/products/${category}`}>
-                <div>{category}</div>
+                {category}
               </Link>
             </li>
           )}

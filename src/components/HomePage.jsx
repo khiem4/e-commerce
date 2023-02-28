@@ -45,7 +45,7 @@ const HomePage = () => {
     <>
       <Banner />
       <div className='home_page_products_container'>
-        <h3>Most Discount Products</h3>
+        <h3>Most Popular Products</h3>
         <div className={sliderName}>
           <ProductsContainer products={productSlider} />
           <div className='slider_button'>
