@@ -47,11 +47,10 @@ export const addProductToCart = (product, quantity) => {
     const findProductInCart = state.find(product =>
       product.title === item.title)
 
+    if (findProductInCart && findProductInCart.quantity === 1 && quantity === -1) {
+      return null
+    }
     if (findProductInCart) {
-      if (findProductInCart.quantity === 1 && quantity === -1) {
-        return null
-      }
-
       const productUpdated = {
         ...findProductInCart,
         quantity: findProductInCart.quantity + quantity,

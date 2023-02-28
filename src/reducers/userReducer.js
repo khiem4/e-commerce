@@ -30,10 +30,10 @@ export const userLogin = (obj) => {
       cartService.setToken(user.token)
 
       dispatch(successMessage('Login successful'))
-      dispatch(removeMessage())
+      dispatch(removeMessage(2000))
     } catch (error) {
       dispatch(errorMessage('Wrong password or id '))
-      dispatch(removeMessage())
+      dispatch(removeMessage(2000))
     }
   }
 }
@@ -46,9 +46,9 @@ export const userLogout = () => {
 
 export const isUserLogged = () => {
   return async dispatch => {
-    const UserLogged = window.localStorage.getItem('loggedAppUser')
-    if (UserLogged) {
-      const user = JSON.parse(UserLogged)
+    const loggedUser = window.localStorage.getItem('loggedAppUser')
+    if (loggedUser) {
+      const user = JSON.parse(loggedUser)
 
       dispatch(setUser(user.username))
       cartService.setToken(user.token)
