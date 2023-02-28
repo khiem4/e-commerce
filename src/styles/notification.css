@@ -10,13 +10,13 @@
   color: white;
   z-index: 99;
   position: fixed;
-  right: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .notification_error {
   top: 30%;
-  color: black;
+  color: white;
   background-color: red;
 }
 

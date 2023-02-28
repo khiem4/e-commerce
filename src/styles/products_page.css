@@ -26,16 +26,16 @@
 }
 
 @media (max-width: 1000px) {
-  .categories_and_sort {
-    margin: 10px;
+  .categories_and_search_bar {
+    padding: 5px 10px;
+    gap: 30px;
   }
 }
 
 @media (max-width:600px) {
-  .categories_and_sort {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  .categories_and_search_bar {
+    padding: 5px 10px;
+    gap: 10px;
   }
 
   .products_price_sort {
@@ -46,5 +46,4 @@
     padding: 5px;
     margin: 5px 0;
   }
-
 }

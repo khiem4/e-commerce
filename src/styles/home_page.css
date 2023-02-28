@@ -4,6 +4,10 @@
   padding-left: 5px;
 }
 
+.categories_and_search_bar {
+  background-color: gray;
+}
+
 .products_slider,
 .prev_items {
   position: relative;

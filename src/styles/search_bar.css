@@ -18,3 +18,16 @@
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
 }
+
+@media (max-width: 800px) {
+  .search_bar {
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .search_bar {
+    padding-right: 10px;
+    width: 80%;
+  }
+}

@@ -3,15 +3,12 @@
   width: 200px;
   background-color: white;
   border-radius: 5px;
-}
-
-.categories > div {
-  border-radius: 5px;
+  border: none;
 }
 
 .categories > div:first-child {
   display: flex;
-  gap: 70px;
+  justify-content: space-between;
   padding: 10px 10px;
   font-weight: bold;
   align-items: center;
@@ -19,6 +16,7 @@
 
 .drop_down_categories ul {
   display: none;
+  list-style: none;
 }
 
 .drop_down_categories li::first-letter {
@@ -30,15 +28,25 @@
   z-index: 9;
   position: absolute;
   width: 100%;
-  border: 1px solid black;
   background-color: white;
   overflow: auto;
   height: 300px;
+  border: 1px solid rgb(183, 180, 180);
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .categories:hover .drop_down_categories ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+  margin-top: 10px;
   padding-left: 10px;
+}
+
+@media (max-width:600px) {
+  .categories {
+    margin: 0 10px;
+  }
 }

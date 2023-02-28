@@ -1,24 +1,24 @@
-.sale-banner > div > img {
+.banner > div > img {
   margin: 0 20px 20px;
   width: 60vw;
   aspect-ratio: 16/9;
   object-fit: contain;
 }
 
-.sale-banner > div {
+.banner > div {
   display: flex;
   justify-content: center;
 }
 
 @media (max-width:1000px) {
-  .sale-banner > div > img {
+  .banner > div > img {
     width: 600px;
   }
 }
 
 
 @media (max-width:600px) {
-  .sale-banner > div > img {
+  .banner > div > img {
     width: 400px;
   }
 }
