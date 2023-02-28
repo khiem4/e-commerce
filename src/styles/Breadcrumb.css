@@ -1,0 +1,26 @@
+.bread_crumb {
+  margin: 40px 100px;
+  display: flex;
+  gap: 10px;
+}
+
+.bread_crumb span {
+  display: flex;
+  gap: 10px;
+}
+
+.crumb p::first-letter {
+  text-transform: capitalize;
+}
+
+.crumb {
+  color: red;
+}
+
+@media (max-width: 600px) {
+  .bread_crumb {
+    margin: 40px 10px;
+    display: flex;
+    gap: 10px;
+  }
+}
