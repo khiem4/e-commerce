@@ -7,9 +7,9 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1)
   const productImg = useRef()
   const products = useSelector(state => state.products)
-  const id = useParams().id
+  const title = useParams().id
 
-  const product = products.find(item => item.id === Number(id))
+  const product = products.find(item => item.title === title)
 
   const mouseOverImg = (image) => {
     productImg.current.src = image
@@ -54,7 +54,8 @@ const Product = () => {
             <div className='product_quantity'>
               <div className='quantity'>
                 <button
-                  onClick={() => handleQuantity(-1)}>&minus;
+                  onClick={() => handleQuantity(-1)}>
+                  &minus;
                 </button>
                 <input
                   type='text'
@@ -62,7 +63,8 @@ const Product = () => {
                   onChange={(e) => setQuantity(e.target.value)}
                   name='quantity' />
                 <button
-                  onClick={() => handleQuantity(+1)}>&#xff0b;
+                  onClick={() => handleQuantity(+1)}>
+                  &#xff0b;
                 </button>
               </div>
               <span>{product.stock} available</span>

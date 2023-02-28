@@ -15,24 +15,22 @@ const ProductsContainer = ({ products }) => {
             quantity={1}>
             <BsFillCartPlusFill size={20} />
           </AddToCart>
-          <div>
-            <Link
-              to={`/products/${product.category}/${product.id}`}>
-              <img
-                src={product.thumbnail}
-                alt={product.title}
-              />
-            </Link>
-          </div>
-          <div className='products_info'>
-            <p>{product.title}</p>
-            <div>
-              <span>${Math.round(
-                product.price - (product.price / 100 * product.discountPercentage))}
-              </span>
-              <span>${product.price}</span>
+          <Link
+            to={`/products/${product.category}/${product.title}`}>
+            <img
+              src={product.thumbnail}
+              alt={product.title}
+            />
+            <div className='products_info'>
+              <p>{product.title}</p>
+              <div>
+                <span>${Math.round(
+                  product.price - (product.price / 100 * product.discountPercentage))}
+                </span>
+                <span>${product.price}</span>
+              </div>
             </div>
-          </div>
+          </Link>
         </li>
       )}
     </ul>
