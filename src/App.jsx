@@ -14,6 +14,8 @@ import Breadcrumb from './components/Breadcrumb'
 import { getAllProducts } from './reducers/productsReducer'
 import { getAllProductsInCart } from './reducers/cartReducer'
 import { isUserLogged } from './reducers/userReducer'
+import SearchBar from './components/SearchBar'
+import Categories from './components/Categories'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -30,6 +32,10 @@ const App = () => {
     <>
       <ScrollToTop />
       <Header />
+      <div className='categories_and_search_bar'>
+        <Categories />
+        <SearchBar />
+      </div>
       {location !== '/'
         ? <Breadcrumb />
         : null}
@@ -65,6 +71,10 @@ const App = () => {
         <Route
           path='/cart'
           element={<CartPage />}
+        />
+        <Route
+          path='/search'
+          element={<ProductsPage />}
         />
       </Routes>
       <Footer />
