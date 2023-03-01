@@ -9,13 +9,15 @@ import notificationReducer from './reducers/notificationReducer';
 import cartReducer from './reducers/cartReducer';
 import productsReducer from './reducers/productsReducer';
 import userReducer from './reducers/userReducer';
+import searchReducer from './reducers/searchReducer';
 
 const store = configureStore({
   reducer: {
     products: productsReducer,
     cart: cartReducer,
     notification: notificationReducer,
-    user: userReducer
+    user: userReducer,
+    search: searchReducer
   }
 })
 
