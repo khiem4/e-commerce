@@ -1,5 +1,5 @@
 .bread_crumb {
-  margin: 40px 100px;
+  margin: 0 100px;
   display: flex;
   gap: 10px;
 }
@@ -9,18 +9,16 @@
   gap: 10px;
 }
 
-.crumb p::first-letter {
-  text-transform: capitalize;
-}
-
-.crumb {
+.bread_crumb div:last-child p {
   color: red;
 }
 
-@media (max-width: 600px) {
+.bread_crumb p::first-letter {
+  text-transform: capitalize;
+}
+
+@media (max-width: 1000px) {
   .bread_crumb {
-    margin: 40px 10px;
-    display: flex;
-    gap: 10px;
+    margin: 0 10px;
   }
 }

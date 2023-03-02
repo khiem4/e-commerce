@@ -10,7 +10,7 @@ const Breadcrumb = () => {
     .map(crumb => {
       currentLink += `/${crumb}`
       return (
-        <div className='crumb' key={crumb}>
+        <div key={crumb}>
           <Link to={currentLink}>
             <span>&gt;
               <p>{decodeURIComponent(crumb)}</p>
