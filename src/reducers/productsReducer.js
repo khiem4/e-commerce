@@ -7,14 +7,11 @@ const productsSlice = createSlice({
   reducers: {
     initializeProducts(state, action) {
       return action.payload
-    },
-    sortPrice(state, action) {
-      return action.payload
     }
   }
 })
 
-export const { initializeProducts, sortPrice } = productsSlice.actions
+export const { initializeProducts } = productsSlice.actions
 
 export const getAllProducts = () => {
   return async dispatch => {
@@ -23,19 +20,5 @@ export const getAllProducts = () => {
   }
 }
 
-export const sortProductsPrice = (string) => {
-  return (dispatch, getState) => {
-    const products = getState().products
-
-    if (string === 'lowToHigh') {
-      const sort = [...products].sort((a, b) => a.price - b.price)
-      dispatch(sortPrice(sort))
-    }
-    if (string === 'highToLow') {
-      const sort = [...products].sort((a, b) => b.price - a.price)
-      dispatch(sortPrice(sort))
-    }
-  }
-}
 
 export default productsSlice.reducer
