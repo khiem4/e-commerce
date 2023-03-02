@@ -1,6 +1,6 @@
 .search_bar {
   display: flex;
-  width: 40%;
+  width: 35%;
 }
 
 .search_bar input {
@@ -17,6 +17,12 @@
   border: none;
   border-bottom-right-radius: 5px;
   border-top-right-radius: 5px;
+}
+
+.search_bar button {
+  border: none;
+  background-color: white;
+  border-radius: 0 5px 5px 0;
 }
 
 @media (max-width: 800px) {
