@@ -69,3 +69,31 @@
     right: 0;
   }
 }
+
+@media (max-width: 1000px) {
+  .home_page_products_container h3 {
+    margin: 30px 10px;
+  }
+
+  .products_slider .row,
+  .prev_items .row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .products_slider .row,
+  .prev_items .row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+
+  .products_slider .row,
+  .prev_items .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

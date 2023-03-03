@@ -1,7 +1,7 @@
 .categories_and_search_bar {
   display: flex;
   gap: 50px;
-  margin: 30px 0 60px;
+  margin: 30px 0 40px;
   padding: 5px 100px;
   background-color: gray;
 }
@@ -10,7 +10,7 @@
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin-right: 100px;
+  margin: 30px 100px 0 0;
   color: red;
 }
 
@@ -31,20 +31,15 @@
     padding: 5px 10px;
     gap: 30px;
   }
+
+  .products_price_sort {
+    padding: 5px;
+    margin-right: 10px;
+  }
 }
 
 @media (max-width:600px) {
   .categories_and_search_bar {
-    padding: 5px 10px;
     gap: 10px;
-  }
-
-  .products_price_sort {
-    justify-content: start;
-  }
-
-  .products_price_sort button {
-    padding: 5px;
-    margin: 5px 0;
   }
 }
