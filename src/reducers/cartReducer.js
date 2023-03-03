@@ -37,24 +37,20 @@ export const getAllProductsInCart = () => {
   }
 }
 
-export const addProductToCart = (product, quantity) => {
+export const addProductToCart = (item) => {
   return async (dispatch, getState) => {
     const state = getState().cart
-    const item = {
-      ...product,
-      quantity
-    }
-    const findProductInCart = state.find(product =>
+    const productInCart = state.find(product =>
       product.title === item.title)
 
-    if (findProductInCart && findProductInCart.quantity === 1 && quantity === -1) {
+    if (productInCart && productInCart.quantity === 1 && item.quantity === -1) {
       return null
     }
-    if (findProductInCart) {
+    if (productInCart) {
       const productUpdated = {
-        ...findProductInCart,
-        quantity: findProductInCart.quantity + quantity,
-        id: findProductInCart.id
+        ...productInCart,
+        quantity: productInCart.quantity + item.quantity,
+        id: productInCart.id
       }
       return dispatch(updateProductQuantity(productUpdated))
     }
