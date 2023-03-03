@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai'
 import { useSelector } from 'react-redux'
 import Banner from './Banner'
@@ -9,6 +9,28 @@ const HomePage = () => {
   const [firstIndex, setCurrentIndex] = useState(0)
   const [lastIndex, setLastIndex] = useState(5)
   const [sliderName, setSliderName] = useState('products_slider')
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+
+    if (screenWidth <= 1000) {
+      setLastIndex(4)
+    }
+    if (screenWidth <= 800) {
+      setLastIndex(3)
+    }
+    if (screenWidth <= 600) {
+      setLastIndex(2)
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [screenWidth])
 
   const productsHighDiscount = products.filter(product =>
     product.discountPercentage > 17)

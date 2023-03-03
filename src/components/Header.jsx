@@ -4,34 +4,37 @@ import { IoMdCart } from 'react-icons/io'
 import { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import Notification from './Notification'
 import { logOut } from '../reducers/userReducer'
 import { removeMessage, successMessage } from '../reducers/notificationReducer'
+import Notification from './Notification'
 
 const Header = () => {
+  const dispatch = useDispatch()
   const user = useSelector(state => state.user)
   const cart = useSelector(state => state.cart)
-  const dispatch = useDispatch()
-  const [navigation, setNavigation] = useState(true)
-  const navigationDiv = useRef()
+  const [navigation, setNavigation] = useState(false)
+  const navigationRef = useRef()
   const location = useLocation().pathname
 
   useEffect(() => {
-    setNavigation(true)
-  }, [location])
+    setNavigation(false)
 
-  const handleClick = () => {
-    setNavigation(!navigation)
-  }
-
-  const isNavigationHidden = navigation ? 'navigation_hidden' : 'navigation_show'
-
-  const clickedOutSideDiv = () => {
-    document.addEventListener('click', function (e) {
-      if (!navigationDiv.current.contains(e.target)) {
-        return setNavigation(!navigation)
+    function handleClickOutside(event) {
+      if (navigationRef.current &&
+        !navigationRef.current.contains(event.target)) {
+        setNavigation(!navigationRef)
       }
-    })
+    }
+
+    document.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [location, navigationRef])
+
+  const handleClose = () => {
+    setNavigation(!navigation)
   }
 
   const handleLogout = () => {
@@ -41,13 +44,17 @@ const Header = () => {
     dispatch(removeMessage(2000))
   }
 
+  const isNavigationHidden = navigation
+    ? 'navigation_show'
+    : 'navigation_hidden'
+
   return (
     <>
       <div className='header'>
         <div
-          ref={navigationDiv}
+          ref={navigationRef}
           className='navigation_container'>
-          <button onClick={handleClick}>
+          <button onClick={handleClose}>
             <AiOutlineUnorderedList size={30} />
           </button>
           <div className='logo_header'>
@@ -57,19 +64,13 @@ const Header = () => {
           </div>
           <div
             className={isNavigationHidden}
-            onClick={() => clickedOutSideDiv()}>
-            <NavLink to={'/'}>
-              Home
-            </NavLink>
-            <NavLink to={'/products'}>
-              Products
-            </NavLink>
-            <NavLink to={'/cart'}>
-              Cart
-            </NavLink>
+            onClick={() => setNavigation(!navigation)}>
+            <NavLink to={'/'}>Home</NavLink>
+            <NavLink to={'/products'}>Products</NavLink>
+            <NavLink to={'/cart'}>Cart</NavLink>
             <button
               className='close_navigation'
-              onClick={handleClick}>
+              onClick={handleClose}>
               X
             </button>
           </div>
@@ -83,7 +84,7 @@ const Header = () => {
               {user ?
                 <>
                   <Link to='/user'>User</Link>
-                  <Link onClick={handleLogout} >Logout</Link>
+                  <Link onClick={handleLogout}>Logout</Link>
                 </>
                 :
                 <>
