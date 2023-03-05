@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { logOut } from '../reducers/userReducer'
-import { removeMessage, successMessage } from '../reducers/notificationReducer'
+import { successMessage } from '../reducers/notificationReducer'
 import Notification from './Notification'
 
 const Header = () => {
@@ -17,15 +17,12 @@ const Header = () => {
   const location = useLocation().pathname
 
   useEffect(() => {
-    setNavigation(false)
-
     function handleClickOutside(event) {
       if (navigationRef.current &&
         !navigationRef.current.contains(event.target)) {
-        setNavigation(!navigationRef)
+        setNavigation(!navigation)
       }
     }
-
     document.addEventListener('click', handleClickOutside)
 
     return () => {
@@ -39,9 +36,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logOut())
-    window.localStorage.removeItem('loggedAppUser')
-    dispatch(successMessage('Logout successful'))
-    dispatch(removeMessage(2000))
+    dispatch(successMessage('Logout successful', 2000))
   }
 
   const isNavigationHidden = navigation

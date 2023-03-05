@@ -25,14 +25,14 @@ export const { success, remove, error } = notificationSlice.actions
 export const successMessage = (message, timer) => {
   return dispatch => {
     dispatch(success(message))
-    dispatch(removeMessage, timer)
+    dispatch(removeMessage(timer))
   }
 }
 
 export const errorMessage = (message, timer) => {
   return dispatch => {
     dispatch(error(message))
-    dispatch(removeMessage, timer)
+    dispatch(removeMessage(timer))
   }
 }
 
