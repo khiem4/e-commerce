@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import cartService from '../services/cart';
 import userService from '../services/users';
+import { localCartToDb } from './cartReducer';
 import { errorMessage, removeMessage, successMessage } from './notificationReducer';
 
 const userSlice = createSlice({
@@ -21,19 +22,15 @@ export const { setUser, logOut } = userSlice.actions
 export const userLogin = (obj) => {
   return async dispatch => {
     try {
-      const user = await userService.login(obj)
-      dispatch(setUser(user.username))
+      const response = await userService.login(obj)
+      dispatch(setUser(response))
+      cartService.setToken(response.token)
 
-      window.localStorage.setItem(
-        'loggedAppUser', JSON.stringify(user)
-      )
-      cartService.setToken(user.token)
+      localStorage.setItem('loggedAppUser', JSON.stringify(response))
 
-      dispatch(successMessage('Login successful'))
-      dispatch(removeMessage(2000))
+      dispatch(successMessage('Login successful', 2000))
     } catch (error) {
-      dispatch(errorMessage('Wrong password or id '))
-      dispatch(removeMessage(2000))
+      dispatch(errorMessage('Wrong password or id ', 2000))
     }
   }
 }
@@ -41,6 +38,7 @@ export const userLogin = (obj) => {
 export const userLogout = () => {
   return async dispatch => {
     dispatch(logOut())
+    localStorage.removeItem('loggedAppUser')
   }
 }
 
