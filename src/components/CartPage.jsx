@@ -19,8 +19,11 @@ const CartPage = () => {
       return null
     }
 
-    const updateProduct = { ...product, quantity: product.quantity + quantity }
-    dispatch(updateProductQuantity(updateProduct))
+    const updatedProduct = {
+      ...product,
+      quantity: product.quantity + quantity
+    }
+    dispatch(updateProductQuantity(updatedProduct))
   }
 
   if (cart.length === 0) {
@@ -89,7 +92,7 @@ const CartPage = () => {
             </li>
           </ul>
           <button>Check Out</button>
-          <button onClick={() => navigate('/products/all')}>
+          <button onClick={() => navigate('/products')}>
             Continue Shopping
           </button>
         </div>

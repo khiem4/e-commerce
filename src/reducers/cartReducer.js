@@ -5,7 +5,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: [],
   reducers: {
-    initializeCart(state, action) {
+    setCart(state, action) {
       return action.payload
     },
     addProduct(state, action) {
@@ -15,7 +15,10 @@ const cartSlice = createSlice({
     updateProduct(state, action) {
       const productUpdated = action.payload
       return state.map(product =>
-        product.title !== productUpdated.title ? product : productUpdated)
+        product.title !== productUpdated.title
+          ? product
+          : productUpdated
+      )
     },
     deleteProduct(state, action) {
       const id = action.payload
@@ -25,25 +28,27 @@ const cartSlice = createSlice({
 })
 
 export const {
-  initializeCart,
+  setCart,
   addProduct,
   updateProduct,
   deleteProduct } = cartSlice.actions
 
 export const getAllProductsInCart = () => {
   return async dispatch => {
-    const products = await cartService.getCart()
-    dispatch(initializeCart(products))
+    const response = await cartService.getCart()
+    dispatch(setCart(response))
   }
 }
 
 export const addProductToCart = (item) => {
   return async (dispatch, getState) => {
-    const state = getState().cart
-    const productInCart = state.find(product =>
+    const cart = getState().cart
+    const productInCart = cart.find(product =>
       product.title === item.title)
 
-    if (productInCart && productInCart.quantity === 1 && item.quantity === -1) {
+    if (productInCart
+      && productInCart.quantity === 1
+      && item.quantity === -1) {
       return null
     }
     if (productInCart) {

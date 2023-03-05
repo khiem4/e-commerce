@@ -3,7 +3,7 @@ import { BsInfoCircle, BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs
 
 const Footer = () => {
   return (
-    <div className='footer'>
+    <>
       <div className="footer_info_container">
         <div className='footer_info contact'>
           <h4>CONTACT INFO</h4>
@@ -33,7 +33,7 @@ const Footer = () => {
       <div className='footer_copyright'>
         <p>@Website made by me: khiemcan@gmail.com</p>
       </div>
-    </div>
+    </>
   )
 }
 
