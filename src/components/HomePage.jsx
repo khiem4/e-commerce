@@ -17,6 +17,9 @@ const HomePage = () => {
     }
     window.addEventListener('resize', handleResize)
 
+    if (screenWidth >= 1000) {
+      setLastIndex(5)
+    }
     if (screenWidth <= 1000) {
       setLastIndex(4)
     }
