@@ -15,6 +15,7 @@ const notificationSlice = createSlice({
     },
     remove(state, action) {
       state.success = action.payload
+      state.error = action.payload
     },
   },
 })
