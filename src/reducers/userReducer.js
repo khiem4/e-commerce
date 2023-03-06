@@ -38,12 +38,11 @@ export const userLogout = () => async (dispatch) => {
 }
 
 export const isUserLogged = () => async (dispatch) => {
-  const loggedUser = window.localStorage.getItem('loggedAppUser')
-  if (loggedUser) {
-    const user = JSON.parse(loggedUser)
+  const loggedUser = JSON.parse(localStorage.getItem('loggedUser'))
 
-    dispatch(setUser(user.username))
-    cartService.setToken(user.token)
+  if (loggedUser) {
+    dispatch(setUser(loggedUser.username))
+    cartService.setToken(loggedUser.token)
   }
 }
 
