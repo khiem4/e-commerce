@@ -15,7 +15,7 @@
 }
 
 .pagination button:hover {
-  background-color: var(--color-orange-red);
+  background-color: orangered;
   color: white;
 }
 
