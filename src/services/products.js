@@ -6,7 +6,7 @@ const getAll = async () => {
 }
 
 const productService = {
-  getAll
+  getAll,
 }
 
 export default productService
