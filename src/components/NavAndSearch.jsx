@@ -41,7 +41,10 @@ function NavAndSearch() {
         </div>
       </div>
       <IconContext.Provider value={{ className: 'search_icon' }}>
-        <form className="search_bar">
+        <form
+          onSubmit={handleSearch}
+          className="search_bar"
+        >
           <input
             type="text"
             name="search"
