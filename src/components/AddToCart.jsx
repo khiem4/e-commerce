@@ -16,7 +16,9 @@ function AddToCart({
       return dispatch(errorMessage('Sorry you need to login first', 4000))
     }
 
-    dispatch(addProductToCart(product, quantity))
+    const item = { ...product, quantity }
+
+    dispatch(addProductToCart(item))
     return dispatch(successMessage('Product has been added to cart', 2000))
   }
 
