@@ -4,7 +4,7 @@ const notificationSlice = createSlice({
   name: 'notification',
   initialState: {
     error: null,
-    success: null
+    success: null,
   },
   reducers: {
     success(state, action) {
@@ -14,35 +14,27 @@ const notificationSlice = createSlice({
       state.error = action.payload
     },
     remove(state, action) {
-      state.error = null
-      state.success = null
-    }
-  }
+      state.success = action.payload
+    },
+  },
 })
 
 export const { success, remove, error } = notificationSlice.actions
 
-export const successMessage = (message, timer) => {
-  return dispatch => {
-    dispatch(success(message))
-    dispatch(removeMessage(timer))
-  }
+export const removeMessage = (timer) => (dispatch) => {
+  setTimeout(() => {
+    dispatch(remove(null))
+  }, timer)
 }
 
-export const errorMessage = (message, timer) => {
-  return dispatch => {
-    dispatch(error(message))
-    dispatch(removeMessage(timer))
-  }
+export const successMessage = (message, timer) => (dispatch) => {
+  dispatch(success(message))
+  dispatch(removeMessage(timer))
 }
 
-export const removeMessage = (timer) => {
-  return dispatch => {
-    setTimeout(() => {
-      dispatch(remove())
-    }, timer)
-  }
+export const errorMessage = (message, timer) => (dispatch) => {
+  dispatch(error(message))
+  dispatch(removeMessage(timer))
 }
-
 
 export default notificationSlice.reducer

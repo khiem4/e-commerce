@@ -1,8 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import cartService from '../services/cart';
-import userService from '../services/users';
-import { localCartToDb } from './cartReducer';
-import { errorMessage, removeMessage, successMessage } from './notificationReducer';
+import { createSlice } from '@reduxjs/toolkit'
+import cartService from '../services/cart'
+import userService from '../services/users'
+import { errorMessage, successMessage } from './notificationReducer'
 
 const userSlice = createSlice({
   name: 'user',
@@ -11,46 +10,40 @@ const userSlice = createSlice({
     setUser(state, action) {
       return action.payload
     },
-    logOut(state, action) {
-      return state = null
-    }
-  }
+    logOut() {
+      return null
+    },
+  },
 })
 
 export const { setUser, logOut } = userSlice.actions
 
-export const userLogin = (obj) => {
-  return async dispatch => {
-    try {
-      const response = await userService.login(obj)
-      dispatch(setUser(response))
-      cartService.setToken(response.token)
+export const userLogin = (obj) => async (dispatch) => {
+  try {
+    const response = await userService.login(obj)
+    dispatch(setUser(response))
+    cartService.setToken(response.token)
 
-      localStorage.setItem('loggedAppUser', JSON.stringify(response))
+    localStorage.setItem('loggedUser', JSON.stringify(response))
 
-      dispatch(successMessage('Login successful', 2000))
-    } catch (error) {
-      dispatch(errorMessage('Wrong password or id ', 2000))
-    }
+    dispatch(successMessage('Login successful', 2000))
+  } catch (error) {
+    dispatch(errorMessage('Wrong password or id ', 2000))
   }
 }
 
-export const userLogout = () => {
-  return async dispatch => {
-    dispatch(logOut())
-    localStorage.removeItem('loggedAppUser')
-  }
+export const userLogout = () => async (dispatch) => {
+  localStorage.removeItem('loggedUser')
+  dispatch(logOut())
 }
 
-export const isUserLogged = () => {
-  return async dispatch => {
-    const loggedUser = window.localStorage.getItem('loggedAppUser')
-    if (loggedUser) {
-      const user = JSON.parse(loggedUser)
+export const isUserLogged = () => async (dispatch) => {
+  const loggedUser = window.localStorage.getItem('loggedAppUser')
+  if (loggedUser) {
+    const user = JSON.parse(loggedUser)
 
-      dispatch(setUser(user.username))
-      cartService.setToken(user.token)
-    }
+    dispatch(setUser(user.username))
+    cartService.setToken(user.token)
   }
 }
 
