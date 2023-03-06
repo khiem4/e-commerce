@@ -10,7 +10,6 @@ import { setSearch } from '../reducers/searchReducer'
 function NavAndSearch() {
   const dispatch = useDispatch()
   const products = useSelector((state) => state.products)
-  const categories = [...new Set(products.map((product) => product.category))]
   const [filter, setFilter] = useState('')
   const navigate = useNavigate()
 
@@ -19,6 +18,8 @@ function NavAndSearch() {
     dispatch(setSearch(filter))
     navigate('/search')
   }
+
+  const categories = [...new Set(products.map((product) => product.category))]
 
   return (
     <div className="categories_and_search_bar">
