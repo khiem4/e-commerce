@@ -3,16 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useParams } from 'react-router-dom'
 import { setSearch } from '../reducers/searchReducer'
 import Pagination from './Pagination'
-import ProductsContainer from './ProductsContainer'
+import ProductsCard from './ProductsCard'
 
-const ProductsPage = () => {
+function ProductsPage() {
+  const dispatch = useDispatch()
+  const products = useSelector((state) => state.products)
+  const search = useSelector((state) => state.search)
+  const { id } = useParams()
+  const location = useLocation().pathname
   const [currentPage, setCurrentPage] = useState(1)
   const [productsPerPage] = useState(15)
-  const dispatch = useDispatch()
-  const products = useSelector(state => state.products)
-  const search = useSelector(state => state.search)
-  const id = useParams().id
-  const location = useLocation().pathname
 
   useEffect(() => {
     setCurrentPage(1)
@@ -20,7 +20,7 @@ const ProductsPage = () => {
     if (location !== '/search') {
       dispatch(setSearch(null))
     }
-  }, [])
+  }, [location, dispatch])
 
   const indexOfLastProduct = currentPage * productsPerPage
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage
@@ -31,25 +31,23 @@ const ProductsPage = () => {
   }
 
   if (id) {
-    const productsInCategory = products.filter(product =>
-      product.category === id)
+    const productsInCategory = products.filter((product) => product.category === id)
 
     return (
-      <ProductsContainer
+      <ProductsCard
         products={productsInCategory}
       />
     )
   }
 
   if (search) {
-    const productsFiltered = products.filter(product =>
-      product.title.toLowerCase().includes(search.toLowerCase())
-      ||
-      product.category.toLowerCase().includes(search.toLowerCase())
+    const productsFiltered = products.filter(
+      (product) => product.title.toLowerCase().includes(search.toLowerCase())
+      || product.category.toLowerCase().includes(search.toLowerCase()),
     )
 
     return (
-      <ProductsContainer
+      <ProductsCard
         products={productsFiltered}
       />
     )
@@ -57,7 +55,7 @@ const ProductsPage = () => {
 
   return (
     <>
-      <ProductsContainer
+      <ProductsCard
         products={currentProducts}
       />
       <Pagination

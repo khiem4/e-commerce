@@ -1,19 +1,20 @@
 import { Link, useLocation } from 'react-router-dom'
 
-const Breadcrumb = () => {
+function Breadcrumb() {
   const location = useLocation().pathname
   let currentLink = ''
 
   const crumb = location
     .split('/')
-    .filter(crumb => crumb !== "")
-    .map(crumb => {
-      currentLink += `/${crumb}`
+    .filter((name) => name !== '')
+    .map((name) => {
+      currentLink += `/${name}`
       return (
-        <div key={crumb}>
+        <div key={name}>
           <Link to={currentLink}>
-            <span>&gt;
-              <p>{decodeURIComponent(crumb)}</p>
+            <span>
+              &gt;
+              <p>{decodeURIComponent(name)}</p>
             </span>
           </Link>
         </div>
@@ -21,8 +22,8 @@ const Breadcrumb = () => {
     })
 
   return (
-    <div className='bread_crumb'>
-      <Link to={'/'}>Home page</Link>
+    <div className="bread_crumb">
+      <Link to="/">Home page</Link>
       {crumb}
     </div>
   )

@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { removeMessage, successMessage } from '../reducers/notificationReducer'
+import { successMessage } from '../reducers/notificationReducer'
 import { userLogin } from '../reducers/userReducer'
 import userService from '../services/users'
 
-const RegisterForm = () => {
+function RegisterForm() {
   const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -17,13 +17,12 @@ const RegisterForm = () => {
     }
     userService.create({ username, password })
 
-    dispatch(successMessage('Your account has been created successfully '))
-    dispatch(removeMessage(2000))
-    dispatch(userLogin({ username, password }))
+    dispatch(successMessage('Your account has been created successfully ', 2000))
+    return dispatch(userLogin({ username, password }))
   }
 
   return (
-    <div className='register_container'>
+    <div className="register_container">
       <div className="register_form">
         <form>
           <h2>Register</h2>
@@ -32,8 +31,8 @@ const RegisterForm = () => {
             <input
               type="text"
               value={username}
-              onChange={e => setUsername(e.target.value)}
-              placeholder='User Name'
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="User Name"
               required
             />
             <p className={username.length < 5
@@ -48,8 +47,8 @@ const RegisterForm = () => {
             <input
               type="password"
               value={password}
-              onChange={e => setPassword(e.target.value)}
-              placeholder='Password'
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
               required
             />
             <p className={password.length < 6
@@ -64,8 +63,8 @@ const RegisterForm = () => {
             <input
               type="password"
               value={confirmPassword}
-              onChange={e => setConfirmPassword(e.target.value)}
-              placeholder='Confirm password'
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm password"
               required
             />
             <p className={password !== confirmPassword
@@ -75,7 +74,10 @@ const RegisterForm = () => {
               Password confirm does not the match
             </p>
           </div>
-          <button onClick={handleCreateAccount}>
+          <button
+            type="button"
+            onClick={handleCreateAccount}
+          >
             Create account
           </button>
         </form>

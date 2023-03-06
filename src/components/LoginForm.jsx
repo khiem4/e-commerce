@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { userLogin } from '../reducers/userReducer'
 
-const LoginForm = () => {
+function LoginForm() {
   const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -18,7 +18,7 @@ const LoginForm = () => {
 
   return (
     <div className="login_form">
-      <form onSubmit={handleLogin}>
+      <form>
         <h2>Login</h2>
         <div className="username_login">
           <span>Username</span>
@@ -27,7 +27,7 @@ const LoginForm = () => {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder='Username'
+            placeholder="Username"
           />
         </div>
         <div className="password_login">
@@ -37,16 +37,19 @@ const LoginForm = () => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
+            placeholder="Password"
           />
         </div>
-        <button>
+        <button
+          type="button"
+          onClick={handleLogin}
+        >
           Login
         </button>
-        <div className='login_register'>
+        <div className="login_register">
           <div>
             <p>Not a member yet?</p>
-            <Link to='/register'>
+            <Link to="/register">
               Register
             </Link>
           </div>
@@ -55,6 +58,5 @@ const LoginForm = () => {
     </div>
   )
 }
-
 
 export default LoginForm

@@ -1,19 +1,34 @@
 import { GrLocation, GrPhone } from 'react-icons/gr'
-import { BsInfoCircle, BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs'
+import {
+  BsInfoCircle, BsFacebook, BsInstagram, BsTwitter,
+} from 'react-icons/bs'
 
-const Footer = () => {
+function Footer() {
   return (
     <>
       <div className="footer_info_container">
-        <div className='footer_info contact'>
+        <div className="footer_info contact">
           <h4>CONTACT INFO</h4>
           <ul>
-            <li> <GrLocation /> 221B Baker Street, London, England</li>
-            <li><GrPhone /> <span className="phone_number">0203.xxx.xxx</span></li>
-            <li><BsInfoCircle /> About Us</li>
+            <li>
+              {' '}
+              <GrLocation />
+              {' '}
+              221B Baker Street, London, England
+            </li>
+            <li>
+              <GrPhone />
+              {' '}
+              <span className="phone_number">0203.xxx.xxx</span>
+            </li>
+            <li>
+              <BsInfoCircle />
+              {' '}
+              About Us
+            </li>
           </ul>
         </div>
-        <div className='footer_info policies'>
+        <div className="footer_info policies">
           <h4>POLICIES</h4>
           <ul>
             <li>Warranty</li>
@@ -21,7 +36,7 @@ const Footer = () => {
             <li>Privacy</li>
           </ul>
         </div>
-        <div className='footer_info social_media'>
+        <div className="footer_info social_media">
           <h4>SOCIAL MEDIA</h4>
           <ul>
             <li><BsFacebook size={20} /></li>
@@ -30,7 +45,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className='footer_copyright'>
+      <div className="footer_copyright">
         <p>@Website made by me: khiemcan@gmail.com</p>
       </div>
     </>

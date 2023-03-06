@@ -7,19 +7,20 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { logOut } from '../reducers/userReducer'
 import { successMessage } from '../reducers/notificationReducer'
 import Notification from './Notification'
+import logo from '../images/logo.jpg'
 
-const Header = () => {
+function Header() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
-  const cart = useSelector(state => state.cart)
+  const user = useSelector((state) => state.user)
+  const cart = useSelector((state) => state.cart)
   const [navigation, setNavigation] = useState(false)
   const navigationRef = useRef()
   const location = useLocation().pathname
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (navigationRef.current &&
-        !navigationRef.current.contains(event.target)) {
+      if (navigationRef.current
+        && !navigationRef.current.contains(event.target)) {
         setNavigation(!navigation)
       }
     }
@@ -45,55 +46,70 @@ const Header = () => {
 
   return (
     <>
-      <div className='header'>
+      <div className="header">
         <div
           ref={navigationRef}
-          className='navigation_container'>
-          <button onClick={handleClose}>
+          className="navigation_container"
+        >
+          <button
+            type="button"
+            onClick={handleClose}
+          >
             <AiOutlineUnorderedList size={30} />
           </button>
-          <div className='logo_header'>
-            <Link to={'/'}>
-              <img src={require('../images/logo.jpg')} alt="store-logo" />
+          <div className="logo_header">
+            <Link to="/">
+              <img src={logo} alt="store-logo" />
             </Link>
           </div>
           <div
             className={isNavigationHidden}
-            onClick={() => setNavigation(!navigation)}>
-            <NavLink to={'/'}>Home</NavLink>
-            <NavLink to={'/products'}>Products</NavLink>
-            <NavLink to={'/cart'}>Cart</NavLink>
+            onClick={() => setNavigation(!navigation)}
+            aria-hidden="true"
+          >
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/products">Products</NavLink>
+            <NavLink to="/cart">Cart</NavLink>
             <button
-              className='close_navigation'
-              onClick={handleClose}>
+              type="button"
+              className="close_navigation"
+              onClick={handleClose}
+            >
               X
             </button>
           </div>
         </div>
         <div className="icons_of_user_cart">
-          <div className='header_user_dropdown'>
+          <div className="header_user_dropdown">
             <div className="icons user_header">
               <FaRegUser size={25} />
             </div>
-            <div className='user_dropdown_content'>
-              {user ?
-                <>
-                  <Link to='/user'>User</Link>
-                  <Link onClick={handleLogout}>Logout</Link>
-                </>
-                :
-                <>
-                  <Link to='/login'>Login</Link>
-                  <Link to='/register'>Register</Link>
-                </>
-              }
+            <div className="user_dropdown_content">
+              {user
+                ? (
+                  <>
+                    <Link to="/user">User</Link>
+                    <button
+                      type="button"
+                      onClick={handleLogout}
+                    >
+                      Logout
+                    </button>
+                  </>
+                )
+                : (
+                  <>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                  </>
+                )}
             </div>
           </div>
           <div className="icons cart_header">
-            <Link to='/cart'>
+            <Link to="/cart">
               <IoMdCart size={20} />
             </Link>
-            <div className='cart_items_length'>
+            <div className="cart_items_length">
               {cart.length}
             </div>
           </div>
