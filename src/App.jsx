@@ -1,4 +1,6 @@
-import { Navigate, Route, Routes, useLocation, } from 'react-router-dom'
+import {
+  Navigate, Route, Routes, useLocation,
+} from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Header from './components/Header'
@@ -14,12 +16,11 @@ import Breadcrumb from './components/Breadcrumb'
 import { getAllProducts } from './reducers/productsReducer'
 import { getAllProductsInCart } from './reducers/cartReducer'
 import { isUserLogged } from './reducers/userReducer'
-import SearchBar from './components/SearchBar'
-import Categories from './components/Categories'
+import NavAndSearch from './components/NavAndSearch'
 
-const App = () => {
+function App() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user)
   const location = useLocation().pathname
 
   useEffect(() => {
@@ -32,48 +33,47 @@ const App = () => {
     <>
       <ScrollToTop />
       <Header />
-      <div className='categories_and_search_bar'>
-        <Categories />
-        <SearchBar />
-      </div>
+      <NavAndSearch />
       {location !== '/'
         ? <Breadcrumb />
         : null}
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={<HomePage />}
         />
         <Route
-          path='/login'
+          path="/login"
           element={
             !user
               ? <LoginForm />
-              : <Navigate replace to='/' />}
+              : <Navigate replace to="/" />
+}
         />
         <Route
-          path='/register'
+          path="/register"
           element={<RegisterForm />}
         />
-        <Route path='/products' >
+        <Route path="/products">
           <Route
-            index element={<ProductsPage />}
-          />
-          <Route
-            path=':id'
+            index
             element={<ProductsPage />}
           />
           <Route
-            path={`:id/:id`}
+            path=":id"
+            element={<ProductsPage />}
+          />
+          <Route
+            path=":id/:id"
             element={<Product />}
           />
         </Route>
         <Route
-          path='/cart'
+          path="/cart"
           element={<CartPage />}
         />
         <Route
-          path='/search'
+          path="/search"
           element={<ProductsPage />}
         />
       </Routes>
