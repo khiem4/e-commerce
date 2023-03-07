@@ -55,6 +55,7 @@ function NavAndSearch() {
           <button
             type="button"
             onClick={handleSearch}
+            title="search"
           >
             <BsSearch />
           </button>
