@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { MdError, MdVerified } from 'react-icons/md'
+import { MdVerified } from 'react-icons/md'
 import React from 'react'
 
 function Notification() {
@@ -14,13 +14,13 @@ function Notification() {
           {notification.success}
         </div>
         )}
-      {notification.error
+      {/* {notification.error
         && (
         <div className="notification_error">
           <MdError size={25} />
           {notification.error}
         </div>
-        )}
+        )} */}
     </>
   )
 }
