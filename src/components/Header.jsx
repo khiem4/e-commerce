@@ -4,7 +4,7 @@ import { IoMdCart } from 'react-icons/io'
 import { useState, useRef, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { logOut } from '../reducers/userReducer'
+import { userLogout } from '../reducers/userReducer'
 import { successMessage } from '../reducers/notificationReducer'
 import Notification from './Notification'
 import logo from '../images/logo.jpg'
@@ -18,10 +18,11 @@ function Header() {
   const location = useLocation().pathname
 
   useEffect(() => {
+    setNavigation(false)
+
     function handleClickOutside(event) {
-      if (navigationRef.current
-        && !navigationRef.current.contains(event.target)) {
-        setNavigation(!navigation)
+      if (!navigationRef.current.contains(event.target)) {
+        setNavigation(false)
       }
     }
     document.addEventListener('click', handleClickOutside)
@@ -29,14 +30,14 @@ function Header() {
     return () => {
       document.removeEventListener('click', handleClickOutside)
     }
-  }, [location, navigationRef])
+  }, [location])
 
-  const handleClose = () => {
+  const handleOpenAndClose = () => {
     setNavigation(!navigation)
   }
 
   const handleLogout = () => {
-    dispatch(logOut())
+    dispatch(userLogout())
     dispatch(successMessage('Logout successful', 2000))
   }
 
@@ -53,7 +54,8 @@ function Header() {
         >
           <button
             type="button"
-            onClick={handleClose}
+            onClick={handleOpenAndClose}
+            title="menu"
           >
             <AiOutlineUnorderedList size={30} />
           </button>
@@ -64,8 +66,6 @@ function Header() {
           </div>
           <div
             className={isNavigationHidden}
-            onClick={() => setNavigation(!navigation)}
-            aria-hidden="true"
           >
             <NavLink to="/">Home</NavLink>
             <NavLink to="/products">Products</NavLink>
@@ -73,7 +73,7 @@ function Header() {
             <button
               type="button"
               className="close_navigation"
-              onClick={handleClose}
+              onClick={handleOpenAndClose}
             >
               X
             </button>
@@ -106,11 +106,13 @@ function Header() {
             </div>
           </div>
           <div className="icons cart_header">
-            <Link to="/cart">
+            <Link to="/cart" title="cart">
               <IoMdCart size={20} />
             </Link>
             <div className="cart_items_length">
-              {cart.length}
+              {user
+                ? cart.length
+                : 0}
             </div>
           </div>
         </div>
