@@ -28,7 +28,7 @@ export const userLogin = (obj) => async (dispatch) => {
 
     dispatch(successMessage('Login successful', 2000))
   } catch (error) {
-    dispatch(errorMessage('Wrong password or id ', 2000))
+    dispatch(errorMessage('Wrong password or id', 60000))
   }
 }
 
