@@ -12,7 +12,7 @@ function ProductsPage() {
   const { id } = useParams()
   const location = useLocation().pathname
   const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage] = useState(15)
+  const [productsPerPage, setProductsPerPage] = useState(15)
 
   useEffect(() => {
     setCurrentPage(1)
@@ -27,7 +27,7 @@ function ProductsPage() {
   const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber)
-    window.scrollTo({ top: 100, behavior: 'smooth' })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   if (id) {
@@ -59,9 +59,9 @@ function ProductsPage() {
         products={currentProducts}
       />
       <Pagination
-        productsPerPage={productsPerPage}
-        totalProducts={products.length}
         paginate={paginate}
+        setProductsPerPage={setProductsPerPage}
+        currentPage={currentPage}
       />
     </>
   )
