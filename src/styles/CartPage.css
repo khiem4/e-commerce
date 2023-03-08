@@ -19,6 +19,10 @@
   color: orangered
 }
 
+table {
+  border-collapse: collapse;
+}
+
 .table_data_product {
   flex-grow: 2;
   text-align: center;
@@ -129,6 +133,10 @@
 }
 
 @media (max-width: 600px) {
+  .table_data_product tr {
+    border-bottom: 1px solid;
+  }
+
   .table_data_product th {
     display: none;
     overflow: hidden;
@@ -144,7 +152,7 @@
     margin-top: 10px;
   }
 
-  .table_data_product td:nth-child(-n+2) {
+  .table_data_product td:nth-child(-n+4) {
     display: flex;
     justify-content: center;
   }
