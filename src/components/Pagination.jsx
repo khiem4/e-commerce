@@ -1,21 +1,44 @@
-function Pagination({ productsPerPage, totalProducts, paginate }) {
-  const pageNumbers = []
+import { useEffect, useState } from 'react'
 
-  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i += 1) {
-    pageNumbers.push(i)
-  }
+function Pagination({ paginate, setProductsPerPage, currentPage }) {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    function handleResize() {
+      setScreenWidth(window.innerWidth)
+    }
+    window.addEventListener('resize', handleResize)
+
+    if (screenWidth <= 1000) {
+      setProductsPerPage(16)
+    }
+    if (screenWidth <= 800) {
+      setProductsPerPage(18)
+    }
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [screenWidth])
 
   return (
     <div className="pagination">
-      {pageNumbers.map((number) => (
-        <button
-          type="button"
-          key={number}
-          onClick={() => paginate(number)}
-        >
-          {number}
-        </button>
-      ))}
+      <button
+        type="button"
+        onClick={() => paginate(
+          currentPage !== 1
+            ? currentPage - 1
+            : currentPage,
+        )}
+      >
+        Prev
+      </button>
+      <button
+        type="button"
+        onClick={() => paginate(currentPage + 1)}
+      >
+        Next
+      </button>
     </div>
   )
 }
