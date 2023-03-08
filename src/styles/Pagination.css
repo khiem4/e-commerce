@@ -7,11 +7,11 @@
 .pagination button {
   cursor: pointer;
   color: black;
-  background-color: rgb(166, 162, 162);
+  background-color: white;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
-  border: none;
+  border: 1px solid;
 }
 
 .pagination button:hover {
@@ -27,4 +27,12 @@
 .pagination button:last-child {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+  .pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 10px;
+  }
 }
